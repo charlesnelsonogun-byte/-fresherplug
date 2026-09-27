@@ -88,7 +88,7 @@
       display: none;
     }
 
-    #message {
+    #message, #profileMessage {
       margin-top: 12px;
       padding: 10px;
       border-radius: 8px;
@@ -117,7 +117,6 @@
 
 <div class="container">
 
-  <!-- LOGIN / SIGNUP -->
   <div class="card" id="authSection">
     <h2>Welcome to FresherPlug</h2>
 
@@ -130,7 +129,6 @@
     <div id="message"></div>
   </div>
 
-  <!-- PROFILE -->
   <div class="card hidden" id="profileSection">
     <h2>Complete Your Profile 👤</h2>
     <p>Tell other freshers a little about yourself.</p>
@@ -146,7 +144,6 @@
     <div id="profileMessage"></div>
   </div>
 
-  <!-- FEATURES -->
   <div class="card hidden" id="appSection">
     <h2>FresherPlug</h2>
     <p id="welcomeText"></p>
@@ -233,9 +230,11 @@
       currentUser = data.user;
 
       if (data.session) {
-        showProfile();
+        await checkProfile();
       } else {
-        showMessage("Account created! Check your email to verify your account.");
+        showMessage(
+          "Account created! Check your email to verify your account."
+        );
       }
     }
   }
@@ -261,12 +260,36 @@
     }
 
     currentUser = data.user;
-    showProfile();
+
+    await checkProfile();
   }
 
-  function showProfile() {
-    document.getElementById("authSection").classList.add("hidden");
-    document.getElementById("profileSection").classList.remove("hidden");
+  async function checkProfile() {
+    if (!currentUser) return;
+
+    const { data, error } =
+      await supabaseClient
+        .from("profiles")
+        .select("id, full_name, university, department, level, about_me")
+        .eq("id", currentUser.id)
+        .maybeSingle();
+
+    if (error) {
+      showMessage(error.message);
+      return;
+    }
+
+    if (data) {
+      document.getElementById("authSection").classList.add("hidden");
+      document.getElementById("profileSection").classList.add("hidden");
+      document.getElementById("appSection").classList.remove("hidden");
+
+      document.getElementById("welcomeText").textContent =
+        "Welcome back, " + data.full_name + "! 🚀";
+    } else {
+      document.getElementById("authSection").classList.add("hidden");
+      document.getElementById("profileSection").classList.remove("hidden");
+    }
   }
 
   async function saveProfile() {
@@ -335,7 +358,7 @@
 
     if (data.user) {
       currentUser = data.user;
-      showProfile();
+      await checkProfile();
     }
   }
 
