@@ -23,6 +23,42 @@
         radial-gradient(circle at bottom right, #312e81 0%, transparent 30%),
         #050816;
       color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* FLOATING EMOJIS */
+    .emoji {
+      position: fixed;
+      bottom: -60px;
+      font-size: 28px;
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatUp linear infinite;
+    }
+
+    .e1 { left: 5%; animation-duration: 13s; animation-delay: 0s; }
+    .e2 { left: 18%; animation-duration: 17s; animation-delay: 3s; }
+    .e3 { left: 32%; animation-duration: 15s; animation-delay: 6s; }
+    .e4 { left: 48%; animation-duration: 19s; animation-delay: 1s; }
+    .e5 { left: 63%; animation-duration: 14s; animation-delay: 5s; }
+    .e6 { left: 78%; animation-duration: 18s; animation-delay: 2s; }
+    .e7 { left: 91%; animation-duration: 16s; animation-delay: 8s; }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      100% {
+        transform: translateY(-115vh) rotate(360deg);
+      }
+    }
+
+    header,
+    .container {
+      position: relative;
+      z-index: 2;
     }
 
     header {
@@ -143,6 +179,10 @@
       margin-bottom: 18px;
     }
 
+    button.whatsapp {
+      background: linear-gradient(135deg, #16a34a, #22c55e);
+    }
+
     button.danger {
       background: #27151b;
       color: #fca5a5;
@@ -226,6 +266,15 @@
 </head>
 
 <body>
+
+<!-- FLOATING EMOJIS -->
+<div class="emoji e1">🎓</div>
+<div class="emoji e2">🚀</div>
+<div class="emoji e3">🏠</div>
+<div class="emoji e4">🍔</div>
+<div class="emoji e5">🎉</div>
+<div class="emoji e6">🤝</div>
+<div class="emoji e7">💬</div>
 
 <header>
   <div class="logo">🚀</div>
@@ -334,7 +383,6 @@
 
     <p id="welcomeText" class="welcome"></p>
 
-
     <div class="section-title">
       Explore
     </div>
@@ -385,6 +433,25 @@
       <p>
         Stay connected with what's happening around campus.
       </p>
+    </div>
+
+
+    <!-- WHATSAPP COMMUNITY -->
+    <div class="feature">
+      <h3>💬 FresherPlug WhatsApp Community</h3>
+
+      <p>
+        Join our community to meet other freshers,
+        share gist, find roommates, discover accommodation
+        and stay connected.
+      </p>
+
+      <button
+        class="whatsapp"
+        onclick="window.open('https://chat.whatsapp.com/DJcwC5MSBcB5nYuoZ6WzmJ?mode=gi_t', '_blank')"
+      >
+        💚 Join WhatsApp Community
+      </button>
     </div>
 
 
