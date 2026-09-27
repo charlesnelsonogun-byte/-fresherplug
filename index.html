@@ -30,10 +30,6 @@
       overflow-x: hidden;
     }
 
-    /* =========================
-       FLOATING FRONT EMOJIS
-       ========================= */
-
     .floating-emojis {
       position: fixed;
       inset: 0;
@@ -400,7 +396,6 @@
 
 <body>
 
-<!-- FLOATING EMOJIS -->
 <div class="floating-emojis">
   <div class="emoji e1">🎓</div>
   <div class="emoji e2">🚀</div>
@@ -421,7 +416,6 @@
 
 <div class="container">
 
-  <!-- LOGIN -->
   <div class="card hero" id="authSection">
 
     <div class="hero-icon">🎓</div>
@@ -460,7 +454,6 @@
   </div>
 
 
-  <!-- PROFILE -->
   <div class="card hidden" id="profileSection">
 
     <button class="back" onclick="backToLogin()">
@@ -511,7 +504,6 @@
   </div>
 
 
-  <!-- MAIN APP -->
   <div class="card hidden" id="appSection">
 
     <span class="badge">FRESHERPLUG 🚀</span>
@@ -520,13 +512,10 @@
 
     <p id="welcomeText" class="welcome"></p>
 
-
     <div class="section-title">
       Explore FresherPlug
     </div>
 
-
-    <!-- FIND FRESHERS -->
     <div class="feature">
       <h3>🧑🏽‍🤝‍🧑🏽 Find Freshers</h3>
 
@@ -543,7 +532,6 @@
     </div>
 
 
-    <!-- ACCOMMODATION -->
     <div class="feature">
       <h3>🏠 Accommodation</h3>
 
@@ -560,7 +548,6 @@
     </div>
 
 
-    <!-- ROOMMATES -->
     <div class="feature">
       <h3>🤝 Roommates & Rent Sharing</h3>
 
@@ -577,7 +564,6 @@
     </div>
 
 
-    <!-- EVENTS -->
     <div class="feature">
       <h3>🎉 Meet & Greet</h3>
 
@@ -594,7 +580,6 @@
     </div>
 
 
-    <!-- FOOD -->
     <div class="feature">
       <h3>🍔 Food</h3>
 
@@ -611,7 +596,6 @@
     </div>
 
 
-    <!-- GIST -->
     <div class="feature">
       <h3>🗣️ UNIBEN Gist</h3>
 
@@ -626,7 +610,6 @@
     </div>
 
 
-    <!-- WHATSAPP -->
     <div class="feature">
 
       <h3>💬 FresherPlug WhatsApp Community</h3>
@@ -646,7 +629,6 @@
     </div>
 
 
-    <!-- PARTNER SECTION -->
     <div class="section-title">
       Grow With FresherPlug
     </div>
@@ -678,7 +660,6 @@
   </div>
 
 
-  <!-- FEATURE INFORMATION -->
   <div class="card hidden" id="featureSection">
 
     <button class="back" onclick="backToApp()">
@@ -690,7 +671,6 @@
   </div>
 
 
-  <!-- PARTNER FORM -->
   <div class="card hidden" id="partnerSection">
 
     <button class="back" onclick="backToApp()">
@@ -766,10 +746,6 @@
 
 <script>
 
-  /* =========================
-     SUPABASE
-     ========================= */
-
   const SUPABASE_URL =
     "https://begcuzzygthqcxbvxkoe.supabase.co";
 
@@ -785,10 +761,6 @@
 
   let currentUser = null;
 
-
-  /* =========================
-     MESSAGES
-     ========================= */
 
   function showMessage(text) {
 
@@ -822,10 +794,6 @@
     box.style.display = "block";
   }
 
-
-  /* =========================
-     CREATE ACCOUNT
-     ========================= */
 
   async function createAccount() {
 
@@ -895,10 +863,6 @@
   }
 
 
-  /* =========================
-     LOGIN
-     ========================= */
-
   async function login() {
 
     const email =
@@ -941,10 +905,6 @@
 
   }
 
-
-  /* =========================
-     CHECK PROFILE
-     ========================= */
 
   async function checkProfile() {
 
@@ -1010,10 +970,6 @@
   }
 
 
-  /* =========================
-     SHOW PROFILE
-     ========================= */
-
   function showProfile() {
 
     document
@@ -1038,10 +994,6 @@
 
   }
 
-
-  /* =========================
-     SAVE PROFILE
-     ========================= */
 
   async function saveProfile() {
 
@@ -1135,10 +1087,6 @@
 
   }
 
-
-  /* =========================
-     FEATURE PAGES
-     ========================= */
 
   function showFeatureInfo(type) {
 
@@ -1319,10 +1267,6 @@
   }
 
 
-  /* =========================
-     PARTNER SECTION
-     ========================= */
-
   function openPartnerSection() {
 
     document
@@ -1346,10 +1290,20 @@
 
 
   /* =========================
-     PARTNER INTEREST
+     SAVE PARTNER APPLICATION
      ========================= */
 
-  function submitPartnerInterest() {
+  async function submitPartnerInterest() {
+
+    if (!currentUser) {
+
+      showPartnerMessage(
+        "Please log in before submitting a partnership application."
+      );
+
+      return;
+    }
+
 
     const name =
       document.getElementById("partnerName")
@@ -1382,16 +1336,50 @@
     }
 
 
-    /*
-      Partner submissions are intentionally not sent to Supabase yet.
+    showPartnerMessage(
+      "Submitting your partnership application... ⏳"
+    );
 
-      We will connect this form to a secure partners table
-      after the partner database is created.
-    */
+
+    const { error } =
+      await supabaseClient
+        .from("partners")
+        .insert({
+
+          user_id: currentUser.id,
+
+          name: name,
+
+          business_name: business,
+
+          partner_type: type,
+
+          phone: phone,
+
+          description: description,
+
+          status: "pending"
+
+        });
+
+
+    if (error) {
+
+      console.error(
+        "Partner submission error:",
+        error
+      );
+
+      showPartnerMessage(
+        "We couldn't submit your application. Please try again."
+      );
+
+      return;
+    }
 
 
     showPartnerMessage(
-      "Thanks! 🤝 Your partnership information is ready for the next FresherPlug partner system."
+      "Application submitted successfully! 🤝🚀 We'll review your partnership request."
     );
 
 
@@ -1418,10 +1406,6 @@
   }
 
 
-  /* =========================
-     BACK TO APP
-     ========================= */
-
   function backToApp() {
 
     document
@@ -1443,10 +1427,6 @@
 
   }
 
-
-  /* =========================
-     BACK TO LOGIN
-     ========================= */
 
   async function backToLogin() {
 
@@ -1477,10 +1457,6 @@
 
   }
 
-
-  /* =========================
-     LOGOUT
-     ========================= */
 
   async function logout() {
 
