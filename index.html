@@ -3,107 +3,224 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FresherPlug</title>
+
+  <title>FresherPlug 🚀</title>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
     }
 
     body {
-      margin: 0;
-      background: #f5f7fb;
-      color: #111827;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, #172554 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #312e81 0%, transparent 30%),
+        #050816;
+      color: #ffffff;
     }
 
     header {
-      background: #111827;
-      color: white;
-      padding: 22px;
+      padding: 28px 20px 20px;
       text-align: center;
+      border-bottom: 1px solid #1e293b;
+      background: rgba(5, 8, 22, 0.85);
+    }
+
+    .logo {
+      font-size: 48px;
+      margin-bottom: 5px;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 30px;
+      font-size: 34px;
+      letter-spacing: -1px;
     }
 
     header p {
-      margin: 8px 0 0;
-      color: #d1d5db;
+      margin-top: 7px;
+      color: #94a3b8;
+      font-size: 14px;
     }
 
     .container {
-      max-width: 700px;
+      width: 100%;
+      max-width: 720px;
       margin: 25px auto;
-      padding: 0 18px;
+      padding: 0 16px 40px;
     }
 
     .card {
-      background: white;
-      padding: 22px;
-      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid #1e293b;
+      border-radius: 22px;
+      padding: 23px;
       margin-bottom: 18px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 30px 22px;
+    }
+
+    .hero-icon {
+      font-size: 55px;
+      margin-bottom: 12px;
+    }
+
+    .hero h2 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #94a3b8;
+      line-height: 1.5;
     }
 
     h2 {
-      margin-top: 0;
+      margin-bottom: 10px;
     }
 
-    input, textarea, button {
+    .subtitle {
+      color: #94a3b8;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    input,
+    textarea {
       width: 100%;
-      padding: 13px;
-      margin-top: 10px;
-      border-radius: 10px;
+      padding: 15px;
+      margin-top: 11px;
+      border-radius: 13px;
+      border: 1px solid #263247;
+      background: #080d19;
+      color: white;
       font-size: 15px;
+      outline: none;
     }
 
-    input, textarea {
-      border: 1px solid #d1d5db;
+    input:focus,
+    textarea:focus {
+      border-color: #6366f1;
     }
 
     textarea {
-      min-height: 100px;
+      min-height: 110px;
       resize: vertical;
     }
 
     button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 12px;
       border: none;
-      background: #111827;
+      border-radius: 13px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
       color: white;
+      font-size: 15px;
       font-weight: bold;
       cursor: pointer;
     }
 
     button.secondary {
-      background: #e5e7eb;
-      color: #111827;
+      background: #1e293b;
+      color: #e2e8f0;
+    }
+
+    button.back {
+      background: transparent;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      text-align: left;
+      margin-bottom: 18px;
+    }
+
+    button.danger {
+      background: #27151b;
+      color: #fca5a5;
+      border: 1px solid #4c1d2a;
     }
 
     .hidden {
       display: none;
     }
 
-    #message, #profileMessage {
-      margin-top: 12px;
-      padding: 10px;
-      border-radius: 8px;
+    #message,
+    #profileMessage {
       display: none;
+      margin-top: 13px;
+      padding: 12px;
+      border-radius: 11px;
+      background: #172033;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .welcome {
+      color: #a5b4fc;
+      margin-bottom: 20px;
     }
 
     .feature {
-      padding: 15px;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      margin-top: 10px;
+      padding: 18px;
+      margin-top: 12px;
+      border-radius: 17px;
+      background: #0a1020;
+      border: 1px solid #1e293b;
+      transition: 0.2s;
+    }
+
+    .feature:hover {
+      border-color: #4f46e5;
+      transform: translateY(-1px);
     }
 
     .feature h3 {
-      margin: 0 0 5px;
+      margin-bottom: 7px;
+      font-size: 17px;
+    }
+
+    .feature p {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .section-title {
+      margin-top: 25px;
+      margin-bottom: 10px;
+      color: #cbd5e1;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 20px;
+      background: #172554;
+      color: #a5b4fc;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 500px) {
+      header h1 {
+        font-size: 30px;
+      }
+
+      .card {
+        padding: 19px;
+      }
     }
   </style>
 </head>
@@ -111,258 +228,527 @@
 <body>
 
 <header>
-  <h1>FresherPlug 🚀</h1>
+  <div class="logo">🚀</div>
+  <h1>FresherPlug</h1>
   <p>Your fresher life, all in one place.</p>
 </header>
 
 <div class="container">
 
-  <div class="card" id="authSection">
-    <h2>Welcome to FresherPlug</h2>
+  <!-- LOGIN -->
+  <div class="card hero" id="authSection">
 
-    <input id="email" type="email" placeholder="Email address">
-    <input id="password" type="password" placeholder="Password">
+    <div class="hero-icon">🎓</div>
 
-    <button onclick="createAccount()">Create Free Account</button>
-    <button class="secondary" onclick="login()">Log In</button>
+    <span class="badge">BUILT FOR FRESHERS</span>
+
+    <h2>Welcome to FresherPlug 👋</h2>
+
+    <p>
+      Meet people, find accommodation, discover events,
+      food and everything you need for fresher life.
+    </p>
+
+    <input
+      id="email"
+      type="email"
+      placeholder="📧 Email address"
+    >
+
+    <input
+      id="password"
+      type="password"
+      placeholder="🔐 Password"
+    >
+
+    <button onclick="createAccount()">
+      🚀 Create Free Account
+    </button>
+
+    <button class="secondary" onclick="login()">
+      🔑 Log In
+    </button>
 
     <div id="message"></div>
+
   </div>
 
+
+  <!-- PROFILE -->
   <div class="card hidden" id="profileSection">
-    <h2>Complete Your Profile 👤</h2>
-    <p>Tell other freshers a little about yourself.</p>
 
-    <input id="fullName" type="text" placeholder="Full name">
-    <input id="university" type="text" placeholder="University">
-    <input id="department" type="text" placeholder="Department">
-    <input id="level" type="text" placeholder="Level e.g. 100 Level">
-    <textarea id="aboutMe" placeholder="Tell us about yourself..."></textarea>
+    <button class="back" onclick="backToLogin()">
+      ← Back to Login
+    </button>
 
-    <button onclick="saveProfile()">Save Profile 🚀</button>
+    <h2>Build Your Fresher Profile 👤</h2>
+
+    <p class="subtitle">
+      Tell other freshers a little about yourself.
+    </p>
+
+    <input
+      id="fullName"
+      type="text"
+      placeholder="👤 Full name"
+    >
+
+    <input
+      id="university"
+      type="text"
+      placeholder="🎓 University"
+    >
+
+    <input
+      id="department"
+      type="text"
+      placeholder="📚 Department"
+    >
+
+    <input
+      id="level"
+      type="text"
+      placeholder="📖 Level e.g. 100 Level"
+    >
+
+    <textarea
+      id="aboutMe"
+      placeholder="💬 Tell us about yourself..."
+    ></textarea>
+
+    <button onclick="saveProfile()">
+      💾 Save Profile
+    </button>
 
     <div id="profileMessage"></div>
+
   </div>
 
+
+  <!-- MAIN APP -->
   <div class="card hidden" id="appSection">
-    <h2>FresherPlug</h2>
-    <p id="welcomeText"></p>
+
+    <span class="badge">FRESHERPLUG 🚀</span>
+
+    <h2>Welcome back! 👋</h2>
+
+    <p id="welcomeText" class="welcome"></p>
+
+
+    <div class="section-title">
+      Explore
+    </div>
+
 
     <div class="feature">
       <h3>🧑🏽‍🤝‍🧑🏽 Find Freshers</h3>
-      <p>Meet other students and make new friends.</p>
+      <p>
+        Meet other students and make new friends.
+      </p>
     </div>
+
 
     <div class="feature">
       <h3>🏠 Accommodation</h3>
-      <p>Discover accommodation close to school.</p>
+      <p>
+        Discover places to stay close to your school.
+      </p>
     </div>
+
 
     <div class="feature">
       <h3>🤝 Roommates & Rent Sharing</h3>
-      <p>Find people to share accommodation with.</p>
+      <p>
+        Find people looking for roommates and rent partners.
+      </p>
     </div>
+
 
     <div class="feature">
       <h3>🎉 Meet & Greet</h3>
-      <p>Discover and join fresher events.</p>
+      <p>
+        Discover and join fresher events.
+      </p>
     </div>
+
 
     <div class="feature">
       <h3>🍔 Food</h3>
-      <p>Discover food and vendors around campus.</p>
+      <p>
+        Discover food and vendors around campus.
+      </p>
     </div>
+
 
     <div class="feature">
       <h3>🗣️ UNIBEN Gist</h3>
-      <p>Stay connected with what's happening.</p>
+      <p>
+        Stay connected with what's happening around campus.
+      </p>
     </div>
 
-    <button onclick="logout()">Log Out</button>
+
+    <button class="danger" onclick="logout()">
+      🚪 Log Out
+    </button>
+
   </div>
 
 </div>
 
+
 <script>
-  const SUPABASE_URL = "https://begcuzzygthqcxbvxkoe.supabase.co";
+
+  const SUPABASE_URL =
+    "https://begcuzzygthqcxbvxkoe.supabase.co";
 
   const SUPABASE_KEY =
     "sb_publishable_bJgADcSYf3X3x9Z5oYTxvQ_mBkB5zra";
 
   const supabaseClient =
-    window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
 
   let currentUser = null;
 
+
   function showMessage(text) {
-    const box = document.getElementById("message");
+
+    const box =
+      document.getElementById("message");
+
     box.textContent = text;
+
     box.style.display = "block";
   }
+
 
   function showProfileMessage(text) {
-    const box = document.getElementById("profileMessage");
+
+    const box =
+      document.getElementById("profileMessage");
+
     box.textContent = text;
+
     box.style.display = "block";
   }
 
+
   async function createAccount() {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+
+    const email =
+      document.getElementById("email").value.trim();
+
+    const password =
+      document.getElementById("password").value;
+
 
     if (!email || !password) {
-      showMessage("Please enter your email and password.");
+
+      showMessage(
+        "Please enter your email and password."
+      );
+
       return;
     }
+
 
     const { data, error } =
       await supabaseClient.auth.signUp({
+
         email: email,
         password: password
+
       });
 
+
     if (error) {
+
       showMessage(error.message);
+
       return;
     }
+
 
     if (data.user) {
+
       currentUser = data.user;
 
+
       if (data.session) {
-        await checkProfile();
+
+        showProfile();
+
       } else {
+
         showMessage(
-          "Account created! Check your email to verify your account."
+          "Account created! 📧 Check your email to verify your account."
         );
+
       }
+
     }
+
   }
 
+
   async function login() {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+
+    const email =
+      document.getElementById("email").value.trim();
+
+    const password =
+      document.getElementById("password").value;
+
 
     if (!email || !password) {
-      showMessage("Please enter your email and password.");
+
+      showMessage(
+        "Please enter your email and password."
+      );
+
       return;
     }
+
 
     const { data, error } =
       await supabaseClient.auth.signInWithPassword({
+
         email: email,
         password: password
+
       });
 
+
     if (error) {
+
       showMessage(error.message);
+
       return;
     }
 
+
     currentUser = data.user;
 
+
     await checkProfile();
+
   }
 
+
   async function checkProfile() {
+
     if (!currentUser) return;
+
 
     const { data, error } =
       await supabaseClient
         .from("profiles")
-        .select("id, full_name, university, department, level, about_me")
+        .select(
+          "id, full_name, university, department, level, about_me"
+        )
         .eq("id", currentUser.id)
         .maybeSingle();
 
+
     if (error) {
-      showMessage(error.message);
+
+      showMessage(
+        "Login successful, but your profile could not be loaded yet."
+      );
+
+      showProfile();
+
       return;
     }
+
 
     if (data) {
-      document.getElementById("authSection").classList.add("hidden");
-      document.getElementById("profileSection").classList.add("hidden");
-      document.getElementById("appSection").classList.remove("hidden");
 
-      document.getElementById("welcomeText").textContent =
+      document
+        .getElementById("authSection")
+        .classList.add("hidden");
+
+      document
+        .getElementById("profileSection")
+        .classList.add("hidden");
+
+      document
+        .getElementById("appSection")
+        .classList.remove("hidden");
+
+
+      document
+        .getElementById("welcomeText")
+        .textContent =
         "Welcome back, " + data.full_name + "! 🚀";
+
     } else {
-      document.getElementById("authSection").classList.add("hidden");
-      document.getElementById("profileSection").classList.remove("hidden");
+
+      showProfile();
+
     }
+
   }
 
+
+  function showProfile() {
+
+    document
+      .getElementById("authSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("appSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("profileSection")
+      .classList.remove("hidden");
+
+  }
+
+
   async function saveProfile() {
+
     if (!currentUser) {
-      showProfileMessage("Please log in first.");
+
+      showProfileMessage(
+        "Please log in first."
+      );
+
       return;
     }
+
 
     const fullName =
-      document.getElementById("fullName").value.trim();
+      document.getElementById("fullName")
+        .value.trim();
 
     const university =
-      document.getElementById("university").value.trim();
+      document.getElementById("university")
+        .value.trim();
 
     const department =
-      document.getElementById("department").value.trim();
+      document.getElementById("department")
+        .value.trim();
 
     const level =
-      document.getElementById("level").value.trim();
+      document.getElementById("level")
+        .value.trim();
 
     const aboutMe =
-      document.getElementById("aboutMe").value.trim();
+      document.getElementById("aboutMe")
+        .value.trim();
+
 
     if (!fullName) {
-      showProfileMessage("Please enter your full name.");
+
+      showProfileMessage(
+        "Please enter your full name."
+      );
+
       return;
     }
+
 
     const { error } =
       await supabaseClient
         .from("profiles")
-        .insert({
-          id: currentUser.id,
-          full_name: fullName,
-          university: university,
-          department: department,
-          level: level,
-          about_me: aboutMe
-        });
+        .upsert(
+
+          {
+            id: currentUser.id,
+            full_name: fullName,
+            university: university,
+            department: department,
+            level: level,
+            about_me: aboutMe
+          },
+
+          {
+            onConflict: "id"
+          }
+
+        );
+
 
     if (error) {
-      showProfileMessage(error.message);
+
+      showProfileMessage(
+        error.message
+      );
+
       return;
     }
 
-    document.getElementById("profileSection").classList.add("hidden");
-    document.getElementById("appSection").classList.remove("hidden");
 
-    document.getElementById("welcomeText").textContent =
-      "Welcome to FresherPlug, " + fullName + "! 🚀";
+    document
+      .getElementById("profileSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("appSection")
+      .classList.remove("hidden");
+
+
+    document
+      .getElementById("welcomeText")
+      .textContent =
+      "Welcome to FresherPlug, " +
+      fullName +
+      "! 🚀";
+
   }
 
-  async function logout() {
+
+  async function backToLogin() {
+
     await supabaseClient.auth.signOut();
 
     currentUser = null;
 
-    document.getElementById("appSection").classList.add("hidden");
-    document.getElementById("profileSection").classList.add("hidden");
-    document.getElementById("authSection").classList.remove("hidden");
+
+    document
+      .getElementById("profileSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("appSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("authSection")
+      .classList.remove("hidden");
+
   }
 
-  async function checkUser() {
-    const { data } =
-      await supabaseClient.auth.getUser();
 
-    if (data.user) {
-      currentUser = data.user;
-      await checkProfile();
-    }
+  async function logout() {
+
+    await supabaseClient.auth.signOut();
+
+    currentUser = null;
+
+
+    document
+      .getElementById("appSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("profileSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("authSection")
+      .classList.remove("hidden");
+
   }
 
 </script>
-.eq("id", currentUser.id)
+
 </body>
 </html>
