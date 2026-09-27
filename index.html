@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>FresherPlug</title>
 
   <style>
@@ -11,224 +10,228 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      color: #111;
-    }
-
-    .app {
-      max-width: 480px;
-      margin: auto;
+      background: #0b0b0b;
+      color: white;
       min-height: 100vh;
-      background: white;
     }
 
     header {
-      padding: 22px 20px;
-      background: #111;
-      color: white;
-      border-radius: 0 0 25px 25px;
+      padding: 25px 20px;
+      text-align: center;
+      border-bottom: 1px solid #222;
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: 800;
+      font-size: 32px;
+      font-weight: bold;
     }
 
     .tagline {
+      color: #aaa;
       margin-top: 8px;
-      color: #ddd;
-      font-size: 14px;
     }
 
-    .welcome {
-      padding: 25px 20px 15px;
+    .hero {
+      text-align: center;
+      padding: 55px 20px 35px;
     }
 
-    .welcome h1 {
-      font-size: 25px;
-      margin-bottom: 8px;
-    }
-
-    .welcome p {
-      color: #666;
-      line-height: 1.5;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      padding: 15px 20px;
-    }
-
-    .card {
-      border: none;
-      background: #f2f2f2;
-      border-radius: 18px;
-      padding: 20px 15px;
-      text-align: left;
-      min-height: 120px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .card:active {
-      transform: scale(0.96);
-    }
-
-    .icon {
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
-
-    .card h3 {
-      font-size: 16px;
-      margin-bottom: 5px;
-    }
-
-    .card p {
-      font-size: 12px;
-      color: #666;
-    }
-
-    .community {
-      margin: 15px 20px 30px;
-      padding: 20px;
-      border-radius: 20px;
-      background: #111;
-      color: white;
-    }
-
-    .community h2 {
-      font-size: 19px;
-      margin-bottom: 8px;
-    }
-
-    .community p {
-      color: #ccc;
-      font-size: 13px;
-      line-height: 1.5;
+    .hero h1 {
+      font-size: 38px;
       margin-bottom: 15px;
     }
 
-    .whatsapp {
+    .hero p {
+      color: #aaa;
+      line-height: 1.6;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .buttons {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    button {
       border: none;
-      background: white;
-      color: #111;
-      padding: 12px 18px;
-      border-radius: 12px;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
 
+    .primary {
+      background: white;
+      color: black;
+    }
+
+    .secondary {
+      background: #1c1c1c;
+      color: white;
+      border: 1px solid #333;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      padding: 25px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .card {
+      background: #151515;
+      border: 1px solid #242424;
+      border-radius: 15px;
+      padding: 22px 12px;
+      text-align: center;
+    }
+
+    .card span {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+    }
+
+    .community {
+      margin: 20px;
+      padding: 25px;
+      background: #151515;
+      border: 1px solid #242424;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .community p {
+      color: #aaa;
+      margin: 10px 0 18px;
+    }
+
+    .whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
     footer {
       text-align: center;
-      padding: 20px;
-      color: #999;
-      font-size: 12px;
+      color: #666;
+      padding: 30px 15px;
+      font-size: 13px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="app">
+  <header>
+    <div class="logo">FresherPlug 🚀</div>
+    <div class="tagline">Your first year starts here.</div>
+  </header>
 
-    <header>
-      <div class="logo">FresherPlug</div>
-      <div class="tagline">Your first year starts here.</div>
-    </header>
+  <section class="hero">
+    <h1>Welcome to FresherPlug</h1>
 
-    <section class="welcome">
-      <h1>Welcome, Fresher 👋</h1>
-      <p>
-        Find friends, roommates, food, accommodation,
-        events and everything you need to settle into university life.
-      </p>
-    </section>
+    <p>
+      Meet freshers, find accommodation, connect with roommates,
+      discover food, events and everything you need for your first year.
+    </p>
 
-    <section class="grid">
-
-      <button class="card" onclick="showMessage('Find Freshers')">
-        <div class="icon">👥</div>
-        <h3>Find Freshers</h3>
-        <p>Meet students like you.</p>
+    <div class="buttons">
+      <button class="primary" onclick="createAccount()">
+        Create Free Account
       </button>
 
-      <button class="card" onclick="showMessage('Accommodation')">
-        <div class="icon">🏠</div>
-        <h3>Accommodation</h3>
-        <p>Find places close to school.</p>
+      <button class="secondary" onclick="login()">
+        Log In
       </button>
+    </div>
+  </section>
 
-      <button class="card" onclick="showMessage('Roommates')">
-        <div class="icon">🛏️</div>
-        <h3>Roommates</h3>
-        <p>Find someone to share with.</p>
-      </button>
+  <section class="features">
 
-      <button class="card" onclick="showMessage('Rent Sharing')">
-        <div class="icon">💰</div>
-        <h3>Rent Sharing</h3>
-        <p>Split accommodation costs.</p>
-      </button>
+    <div class="card">
+      <span>👥</span>
+      <h3>Find Freshers</h3>
+    </div>
 
-      <button class="card" onclick="showMessage('Meet & Greet')">
-        <div class="icon">🤝</div>
-        <h3>Meet & Greet</h3>
-        <p>Join fresher meetups.</p>
-      </button>
+    <div class="card">
+      <span>🏠</span>
+      <h3>Accommodation</h3>
+    </div>
 
-      <button class="card" onclick="showMessage('Food')">
-        <div class="icon">🍔</div>
-        <h3>Food</h3>
-        <p>Discover food around campus.</p>
-      </button>
+    <div class="card">
+      <span>🤝</span>
+      <h3>Roommates</h3>
+    </div>
 
-      <button class="card" onclick="showMessage('Room Ideas')">
-        <div class="icon">🎨</div>
-        <h3>Room Ideas</h3>
-        <p>Get setup inspiration.</p>
-      </button>
+    <div class="card">
+      <span>💰</span>
+      <h3>Rent Sharing</h3>
+    </div>
 
-      <button class="card" onclick="showMessage('UNIBEN Gist')">
-        <div class="icon">📰</div>
-        <h3>UNIBEN Gist</h3>
-        <p>See what's happening.</p>
-      </button>
+    <div class="card">
+      <span>🎉</span>
+      <h3>Meet & Greet</h3>
+    </div>
 
-    </section>
+    <div class="card">
+      <span>🍔</span>
+      <h3>Food</h3>
+    </div>
 
-    <section class="community">
-      <h2>Join the FresherPlug Community 🔥</h2>
+    <div class="card">
+      <span>🛏️</span>
+      <h3>Room Ideas</h3>
+    </div>
 
-      <p>
-        Connect with other freshers, share information
-        and stay connected through our WhatsApp community.
-      </p>
+    <div class="card">
+      <span>🔥</span>
+      <h3>UNIBEN Gist</h3>
+    </div>
 
-      <button class="whatsapp" onclick="joinWhatsApp()">
-        Join WhatsApp
-      </button>
-    </section>
+  </section>
 
-    <footer>
-      FresherPlug • Built for freshers
-    </footer>
+  <section class="community">
+    <h2>Join the FresherPlug Community</h2>
 
-  </div>
+    <p>
+      Connect with other freshers and stay plugged into the community.
+    </p>
+
+    <button class="whatsapp" onclick="joinCommunity()">
+      Join WhatsApp Community
+    </button>
+  </section>
+
+  <footer>
+    FresherPlug © 2026
+  </footer>
 
   <script>
-    function showMessage(feature) {
-      alert(feature + " is coming soon 🚀");
+    function createAccount() {
+      alert("Create Account is coming next 🚀");
     }
 
-    function joinWhatsApp() {
-      alert("WhatsApp community link will be added soon.");
+    function login() {
+      alert("Login is coming next 🔐");
+    }
+
+    function joinCommunity() {
+      alert("WhatsApp Community link will be added soon 💬");
     }
   </script>
 
