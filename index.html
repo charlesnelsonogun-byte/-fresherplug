@@ -16,6 +16,10 @@
       font-family: Arial, sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       min-height: 100vh;
       background:
@@ -26,32 +30,92 @@
       overflow-x: hidden;
     }
 
-    /* FLOATING EMOJIS */
-    .emoji {
+    /* =========================
+       FLOATING FRONT EMOJIS
+       ========================= */
+
+    .floating-emojis {
       position: fixed;
-      bottom: -60px;
-      font-size: 28px;
-      opacity: 0.18;
+      inset: 0;
+      overflow: hidden;
       pointer-events: none;
-      z-index: 0;
+      z-index: 999;
+    }
+
+    .emoji {
+      position: absolute;
+      bottom: -80px;
+      font-size: 30px;
+      opacity: 0.22;
+      filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.35));
       animation: floatUp linear infinite;
     }
 
-    .e1 { left: 5%; animation-duration: 13s; animation-delay: 0s; }
-    .e2 { left: 18%; animation-duration: 17s; animation-delay: 3s; }
-    .e3 { left: 32%; animation-duration: 15s; animation-delay: 6s; }
-    .e4 { left: 48%; animation-duration: 19s; animation-delay: 1s; }
-    .e5 { left: 63%; animation-duration: 14s; animation-delay: 5s; }
-    .e6 { left: 78%; animation-duration: 18s; animation-delay: 2s; }
-    .e7 { left: 91%; animation-duration: 16s; animation-delay: 8s; }
+    .e1 {
+      left: 4%;
+      animation-duration: 13s;
+      animation-delay: 0s;
+    }
+
+    .e2 {
+      left: 17%;
+      animation-duration: 17s;
+      animation-delay: 3s;
+    }
+
+    .e3 {
+      left: 31%;
+      animation-duration: 15s;
+      animation-delay: 6s;
+    }
+
+    .e4 {
+      left: 47%;
+      animation-duration: 19s;
+      animation-delay: 1s;
+    }
+
+    .e5 {
+      left: 62%;
+      animation-duration: 14s;
+      animation-delay: 5s;
+    }
+
+    .e6 {
+      left: 77%;
+      animation-duration: 18s;
+      animation-delay: 2s;
+    }
+
+    .e7 {
+      left: 91%;
+      animation-duration: 16s;
+      animation-delay: 8s;
+    }
+
+    .e8 {
+      left: 11%;
+      animation-duration: 21s;
+      animation-delay: 10s;
+    }
+
+    .e9 {
+      left: 55%;
+      animation-duration: 20s;
+      animation-delay: 12s;
+    }
 
     @keyframes floatUp {
       0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) rotate(0deg) scale(0.8);
+      }
+
+      50% {
+        transform: translateY(-55vh) rotate(180deg) scale(1.15);
       }
 
       100% {
-        transform: translateY(-115vh) rotate(360deg);
+        transform: translateY(-115vh) rotate(360deg) scale(0.8);
       }
     }
 
@@ -65,7 +129,8 @@
       padding: 28px 20px 20px;
       text-align: center;
       border-bottom: 1px solid #1e293b;
-      background: rgba(5, 8, 22, 0.85);
+      background: rgba(5, 8, 22, 0.88);
+      backdrop-filter: blur(10px);
     }
 
     .logo {
@@ -88,7 +153,7 @@
       width: 100%;
       max-width: 720px;
       margin: 25px auto;
-      padding: 0 16px 40px;
+      padding: 0 16px 50px;
     }
 
     .card {
@@ -98,6 +163,7 @@
       padding: 23px;
       margin-bottom: 18px;
       box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+      backdrop-filter: blur(8px);
     }
 
     .hero {
@@ -131,7 +197,8 @@
     }
 
     input,
-    textarea {
+    textarea,
+    select {
       width: 100%;
       padding: 15px;
       margin-top: 11px;
@@ -144,7 +211,8 @@
     }
 
     input:focus,
-    textarea:focus {
+    textarea:focus,
+    select:focus {
       border-color: #6366f1;
     }
 
@@ -164,6 +232,12 @@
       font-size: 15px;
       font-weight: bold;
       cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
     }
 
     button.secondary {
@@ -183,6 +257,10 @@
       background: linear-gradient(135deg, #16a34a, #22c55e);
     }
 
+    button.partner {
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+    }
+
     button.danger {
       background: #27151b;
       color: #fca5a5;
@@ -190,11 +268,12 @@
     }
 
     .hidden {
-      display: none;
+      display: none !important;
     }
 
     #message,
-    #profileMessage {
+    #profileMessage,
+    #partnerMessage {
       display: none;
       margin-top: 13px;
       padding: 12px;
@@ -220,7 +299,7 @@
 
     .feature:hover {
       border-color: #4f46e5;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
 
     .feature h3 {
@@ -232,6 +311,10 @@
       color: #94a3b8;
       font-size: 14px;
       line-height: 1.4;
+    }
+
+    .feature button {
+      margin-top: 15px;
     }
 
     .section-title {
@@ -253,6 +336,56 @@
       margin-bottom: 12px;
     }
 
+    .coming {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 5px 9px;
+      border-radius: 20px;
+      background: #1e293b;
+      color: #94a3b8;
+      font-size: 11px;
+    }
+
+    .mini-note {
+      margin-top: 10px;
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .success-box {
+      padding: 16px;
+      border-radius: 15px;
+      background: #0b2417;
+      border: 1px solid #14532d;
+      color: #bbf7d0;
+      line-height: 1.5;
+      margin-top: 15px;
+    }
+
+    .partner-list {
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 15px;
+      background: #0a1020;
+      border: 1px solid #1e293b;
+    }
+
+    .partner-list p {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      color: #64748b;
+      font-size: 12px;
+      padding: 10px 20px 35px;
+      position: relative;
+      z-index: 2;
+    }
+
     @media (max-width: 500px) {
       header h1 {
         font-size: 30px;
@@ -268,13 +401,17 @@
 <body>
 
 <!-- FLOATING EMOJIS -->
-<div class="emoji e1">🎓</div>
-<div class="emoji e2">🚀</div>
-<div class="emoji e3">🏠</div>
-<div class="emoji e4">🍔</div>
-<div class="emoji e5">🎉</div>
-<div class="emoji e6">🤝</div>
-<div class="emoji e7">💬</div>
+<div class="floating-emojis">
+  <div class="emoji e1">🎓</div>
+  <div class="emoji e2">🚀</div>
+  <div class="emoji e3">🏠</div>
+  <div class="emoji e4">🍔</div>
+  <div class="emoji e5">🎉</div>
+  <div class="emoji e6">🤝</div>
+  <div class="emoji e7">💬</div>
+  <div class="emoji e8">📚</div>
+  <div class="emoji e9">🔥</div>
+</div>
 
 <header>
   <div class="logo">🚀</div>
@@ -383,67 +520,120 @@
 
     <p id="welcomeText" class="welcome"></p>
 
+
     <div class="section-title">
-      Explore
+      Explore FresherPlug
     </div>
 
 
+    <!-- FIND FRESHERS -->
     <div class="feature">
       <h3>🧑🏽‍🤝‍🧑🏽 Find Freshers</h3>
+
       <p>
-        Meet other students and make new friends.
+        Meet other students, discover people from your university
+        and make new friends.
       </p>
+
+      <span class="coming">PROFILE DISCOVERY</span>
+
+      <button onclick="showFeatureInfo('friends')">
+        👥 Explore Freshers
+      </button>
     </div>
 
 
+    <!-- ACCOMMODATION -->
     <div class="feature">
       <h3>🏠 Accommodation</h3>
+
       <p>
-        Discover places to stay close to your school.
+        Discover places to stay close to your school and connect
+        with accommodation partners.
       </p>
+
+      <span class="coming">PARTNER LISTINGS</span>
+
+      <button onclick="showFeatureInfo('accommodation')">
+        🏠 Find Accommodation
+      </button>
     </div>
 
 
+    <!-- ROOMMATES -->
     <div class="feature">
       <h3>🤝 Roommates & Rent Sharing</h3>
+
       <p>
-        Find people looking for roommates and rent partners.
+        Find freshers who are looking for roommates or people
+        to share rent with.
       </p>
+
+      <span class="coming">MATCHING</span>
+
+      <button onclick="showFeatureInfo('roommates')">
+        🤝 Find Roommates
+      </button>
     </div>
 
 
+    <!-- EVENTS -->
     <div class="feature">
       <h3>🎉 Meet & Greet</h3>
+
       <p>
-        Discover and join fresher events.
+        Discover fresher events, meetups and activities around
+        your university.
       </p>
+
+      <span class="coming">EVENT PARTNERS</span>
+
+      <button onclick="showFeatureInfo('events')">
+        🎉 Discover Events
+      </button>
     </div>
 
 
+    <!-- FOOD -->
     <div class="feature">
       <h3>🍔 Food</h3>
+
       <p>
-        Discover food and vendors around campus.
+        Discover food vendors and places to eat around your
+        university.
       </p>
+
+      <span class="coming">FOOD PARTNERS</span>
+
+      <button onclick="showFeatureInfo('food')">
+        🍔 Discover Food
+      </button>
     </div>
 
 
+    <!-- GIST -->
     <div class="feature">
       <h3>🗣️ UNIBEN Gist</h3>
+
       <p>
-        Stay connected with what's happening around campus.
+        Stay connected with what's happening around campus
+        and within the fresher community.
       </p>
+
+      <button onclick="showFeatureInfo('gist')">
+        🗣️ Open Gist
+      </button>
     </div>
 
 
-    <!-- WHATSAPP COMMUNITY -->
+    <!-- WHATSAPP -->
     <div class="feature">
+
       <h3>💬 FresherPlug WhatsApp Community</h3>
 
       <p>
-        Join our community to meet other freshers,
-        share gist, find roommates, discover accommodation
-        and stay connected.
+        Meet other freshers, share gist, find roommates,
+        discover accommodation and stay connected.
       </p>
 
       <button
@@ -452,6 +642,32 @@
       >
         💚 Join WhatsApp Community
       </button>
+
+    </div>
+
+
+    <!-- PARTNER SECTION -->
+    <div class="section-title">
+      Grow With FresherPlug
+    </div>
+
+    <div class="feature">
+
+      <h3>🤝 Partner With FresherPlug</h3>
+
+      <p>
+        Are you an accommodation agent, landlord, food vendor,
+        event organizer or student-focused business?
+        Put your service in front of freshers.
+      </p>
+
+      <button
+        class="partner"
+        onclick="openPartnerSection()"
+      >
+        🚀 Become a Partner
+      </button>
+
     </div>
 
 
@@ -461,10 +677,98 @@
 
   </div>
 
+
+  <!-- FEATURE INFORMATION -->
+  <div class="card hidden" id="featureSection">
+
+    <button class="back" onclick="backToApp()">
+      ← Back to FresherPlug
+    </button>
+
+    <div id="featureContent"></div>
+
+  </div>
+
+
+  <!-- PARTNER FORM -->
+  <div class="card hidden" id="partnerSection">
+
+    <button class="back" onclick="backToApp()">
+      ← Back to FresherPlug
+    </button>
+
+    <span class="badge">FRESHERPLUG PARTNERS 🤝</span>
+
+    <h2>Become a FresherPlug Partner 🚀</h2>
+
+    <p class="subtitle">
+      We're building a platform where businesses and services
+      can reach freshers directly.
+    </p>
+
+    <input
+      id="partnerName"
+      type="text"
+      placeholder="👤 Your name"
+    >
+
+    <input
+      id="partnerBusiness"
+      type="text"
+      placeholder="🏢 Business / Brand name"
+    >
+
+    <select id="partnerType">
+      <option value="">Choose partnership type</option>
+      <option value="Accommodation">🏠 Accommodation</option>
+      <option value="Food">🍔 Food Vendor</option>
+      <option value="Events">🎉 Events</option>
+      <option value="Student Services">🎓 Student Services</option>
+      <option value="Other">💼 Other</option>
+    </select>
+
+    <input
+      id="partnerPhone"
+      type="tel"
+      placeholder="📱 Phone / WhatsApp number"
+    >
+
+    <textarea
+      id="partnerDescription"
+      placeholder="💬 Tell us about your service..."
+    ></textarea>
+
+    <button class="partner" onclick="submitPartnerInterest()">
+      🚀 Submit Partnership Interest
+    </button>
+
+    <div id="partnerMessage"></div>
+
+    <div class="partner-list">
+      <p>
+        <strong>What partners can eventually get:</strong><br><br>
+        🏠 Accommodation listings<br>
+        🍔 Food/vendor listings<br>
+        🎉 Event promotion<br>
+        📢 Featured placement<br>
+        👥 Access to a growing fresher audience
+      </p>
+    </div>
+
+  </div>
+
 </div>
+
+<footer>
+  FresherPlug 🚀 — Made for Freshers
+</footer>
 
 
 <script>
+
+  /* =========================
+     SUPABASE
+     ========================= */
 
   const SUPABASE_URL =
     "https://begcuzzygthqcxbvxkoe.supabase.co";
@@ -481,6 +785,10 @@
 
   let currentUser = null;
 
+
+  /* =========================
+     MESSAGES
+     ========================= */
 
   function showMessage(text) {
 
@@ -504,6 +812,21 @@
   }
 
 
+  function showPartnerMessage(text) {
+
+    const box =
+      document.getElementById("partnerMessage");
+
+    box.textContent = text;
+
+    box.style.display = "block";
+  }
+
+
+  /* =========================
+     CREATE ACCOUNT
+     ========================= */
+
   async function createAccount() {
 
     const email =
@@ -517,6 +840,16 @@
 
       showMessage(
         "Please enter your email and password."
+      );
+
+      return;
+    }
+
+
+    if (password.length < 6) {
+
+      showMessage(
+        "Password must be at least 6 characters."
       );
 
       return;
@@ -562,6 +895,10 @@
   }
 
 
+  /* =========================
+     LOGIN
+     ========================= */
+
   async function login() {
 
     const email =
@@ -600,11 +937,14 @@
 
     currentUser = data.user;
 
-
     await checkProfile();
 
   }
 
+
+  /* =========================
+     CHECK PROFILE
+     ========================= */
 
   async function checkProfile() {
 
@@ -644,6 +984,14 @@
         .classList.add("hidden");
 
       document
+        .getElementById("featureSection")
+        .classList.add("hidden");
+
+      document
+        .getElementById("partnerSection")
+        .classList.add("hidden");
+
+      document
         .getElementById("appSection")
         .classList.remove("hidden");
 
@@ -662,6 +1010,10 @@
   }
 
 
+  /* =========================
+     SHOW PROFILE
+     ========================= */
+
   function showProfile() {
 
     document
@@ -673,11 +1025,23 @@
       .classList.add("hidden");
 
     document
+      .getElementById("featureSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("partnerSection")
+      .classList.add("hidden");
+
+    document
       .getElementById("profileSection")
       .classList.remove("hidden");
 
   }
 
+
+  /* =========================
+     SAVE PROFILE
+     ========================= */
 
   async function saveProfile() {
 
@@ -772,6 +1136,318 @@
   }
 
 
+  /* =========================
+     FEATURE PAGES
+     ========================= */
+
+  function showFeatureInfo(type) {
+
+    const content =
+      document.getElementById("featureContent");
+
+    let html = "";
+
+
+    if (type === "friends") {
+
+      html = `
+        <span class="badge">FIND FRESHERS</span>
+
+        <h2>🧑🏽‍🤝‍🧑🏽 Meet Other Freshers</h2>
+
+        <p class="subtitle">
+          FresherPlug will help students discover other freshers
+          based on university, department and level.
+        </p>
+
+        <div class="success-box">
+          👥 Your profile is already part of the foundation
+          for this feature.
+        </div>
+
+        <p class="mini-note">
+          Next build step: a secure fresher discovery system.
+        </p>
+      `;
+
+    }
+
+
+    if (type === "accommodation") {
+
+      html = `
+        <span class="badge">ACCOMMODATION</span>
+
+        <h2>🏠 Find Accommodation</h2>
+
+        <p class="subtitle">
+          FresherPlug will connect students with accommodation
+          partners and verified listings around their university.
+        </p>
+
+        <div class="success-box">
+          🤝 We're currently building the partner network that
+          will provide the actual accommodation listings.
+        </div>
+
+        <button class="partner" onclick="openPartnerSection()">
+          🏠 Become an Accommodation Partner
+        </button>
+      `;
+
+    }
+
+
+    if (type === "roommates") {
+
+      html = `
+        <span class="badge">ROOMMATES</span>
+
+        <h2>🤝 Find Roommates</h2>
+
+        <p class="subtitle">
+          Students will be able to create roommate requests
+          and find people interested in sharing accommodation.
+        </p>
+
+        <div class="success-box">
+          🚀 The next stage is building secure roommate
+          matching around fresher profiles.
+        </div>
+      `;
+
+    }
+
+
+    if (type === "events") {
+
+      html = `
+        <span class="badge">MEET & GREET</span>
+
+        <h2>🎉 Fresher Events</h2>
+
+        <p class="subtitle">
+          Discover meetups, parties, orientation activities,
+          student events and other fresher experiences.
+        </p>
+
+        <div class="success-box">
+          🎉 Event organizers will eventually be able to
+          submit events to FresherPlug.
+        </div>
+
+        <button class="partner" onclick="openPartnerSection()">
+          🎉 Become an Event Partner
+        </button>
+      `;
+
+    }
+
+
+    if (type === "food") {
+
+      html = `
+        <span class="badge">FOOD</span>
+
+        <h2>🍔 Fresher Food</h2>
+
+        <p class="subtitle">
+          Find food vendors and student-friendly places to eat
+          around your university.
+        </p>
+
+        <div class="success-box">
+          🍔 Food partners will provide the actual vendors,
+          menus and services shown here.
+        </div>
+
+        <button class="partner" onclick="openPartnerSection()">
+          🍔 Become a Food Partner
+        </button>
+      `;
+
+    }
+
+
+    if (type === "gist") {
+
+      html = `
+        <span class="badge">UNIBEN GIST</span>
+
+        <h2>🗣️ UNIBEN Gist</h2>
+
+        <p class="subtitle">
+          A fresher-focused space for campus updates,
+          conversations and useful information.
+        </p>
+
+        <div class="success-box">
+          💬 The next stage is connecting this section to
+          a proper posts/feed system.
+        </div>
+
+        <button
+          class="whatsapp"
+          onclick="window.open('https://chat.whatsapp.com/DJcwC5MSBcB5nYuoZ6WzmJ?mode=gi_t', '_blank')"
+        >
+          💚 Join the WhatsApp Community
+        </button>
+      `;
+
+    }
+
+
+    content.innerHTML = html;
+
+    document
+      .getElementById("appSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("partnerSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("featureSection")
+      .classList.remove("hidden");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  /* =========================
+     PARTNER SECTION
+     ========================= */
+
+  function openPartnerSection() {
+
+    document
+      .getElementById("appSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("featureSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("partnerSection")
+      .classList.remove("hidden");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  /* =========================
+     PARTNER INTEREST
+     ========================= */
+
+  function submitPartnerInterest() {
+
+    const name =
+      document.getElementById("partnerName")
+        .value.trim();
+
+    const business =
+      document.getElementById("partnerBusiness")
+        .value.trim();
+
+    const type =
+      document.getElementById("partnerType")
+        .value;
+
+    const phone =
+      document.getElementById("partnerPhone")
+        .value.trim();
+
+    const description =
+      document.getElementById("partnerDescription")
+        .value.trim();
+
+
+    if (!name || !business || !type || !phone) {
+
+      showPartnerMessage(
+        "Please fill in your name, business, partnership type and contact number."
+      );
+
+      return;
+    }
+
+
+    /*
+      Partner submissions are intentionally not sent to Supabase yet.
+
+      We will connect this form to a secure partners table
+      after the partner database is created.
+    */
+
+
+    showPartnerMessage(
+      "Thanks! 🤝 Your partnership information is ready for the next FresherPlug partner system."
+    );
+
+
+    document
+      .getElementById("partnerName")
+      .value = "";
+
+    document
+      .getElementById("partnerBusiness")
+      .value = "";
+
+    document
+      .getElementById("partnerType")
+      .value = "";
+
+    document
+      .getElementById("partnerPhone")
+      .value = "";
+
+    document
+      .getElementById("partnerDescription")
+      .value = "";
+
+  }
+
+
+  /* =========================
+     BACK TO APP
+     ========================= */
+
+  function backToApp() {
+
+    document
+      .getElementById("featureSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("partnerSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("appSection")
+      .classList.remove("hidden");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  /* =========================
+     BACK TO LOGIN
+     ========================= */
+
   async function backToLogin() {
 
     await supabaseClient.auth.signOut();
@@ -788,11 +1464,23 @@
       .classList.add("hidden");
 
     document
+      .getElementById("featureSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("partnerSection")
+      .classList.add("hidden");
+
+    document
       .getElementById("authSection")
       .classList.remove("hidden");
 
   }
 
+
+  /* =========================
+     LOGOUT
+     ========================= */
 
   async function logout() {
 
@@ -807,6 +1495,14 @@
 
     document
       .getElementById("profileSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("featureSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("partnerSection")
       .classList.add("hidden");
 
     document
