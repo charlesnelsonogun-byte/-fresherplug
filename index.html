@@ -30,6 +30,10 @@
       overflow-x: hidden;
     }
 
+    /* =========================
+       EXISTING FLOATING EMOJIS
+       ========================= */
+
     .floating-emojis {
       position: fixed;
       inset: 0;
@@ -115,6 +119,191 @@
       }
     }
 
+
+    /* =========================
+       MINI 3D STUDENTS
+       ========================= */
+
+    .mini-student {
+      position: absolute;
+      width: 26px;
+      height: 42px;
+      z-index: 8;
+      pointer-events: none;
+      transform-origin: bottom center;
+      animation: studentBob 3s ease-in-out infinite;
+    }
+
+    .student-head {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      left: 7px;
+      top: 0;
+      border-radius: 50%;
+      background: linear-gradient(
+        145deg,
+        #9a633e,
+        #5b321f
+      );
+      box-shadow:
+        inset -2px -2px 2px rgba(0,0,0,0.35),
+        1px 2px 3px rgba(0,0,0,0.45);
+      z-index: 3;
+    }
+
+    .student-hair {
+      position: absolute;
+      width: 14px;
+      height: 7px;
+      left: 6px;
+      top: -1px;
+      border-radius: 8px 8px 3px 3px;
+      background: #151515;
+      z-index: 4;
+    }
+
+    .student-body {
+      position: absolute;
+      width: 17px;
+      height: 18px;
+      left: 4px;
+      top: 12px;
+      border-radius: 5px 5px 3px 3px;
+      background: linear-gradient(
+        145deg,
+        #6366f1,
+        #312e81
+      );
+      box-shadow:
+        inset -2px -2px 3px rgba(0,0,0,0.3),
+        1px 3px 4px rgba(0,0,0,0.4);
+    }
+
+    .student-shirt-line {
+      position: absolute;
+      width: 9px;
+      height: 2px;
+      left: 4px;
+      top: 6px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .student-arm {
+      position: absolute;
+      width: 5px;
+      height: 15px;
+      top: 13px;
+      border-radius: 5px;
+      background: #875637;
+      transform-origin: top center;
+    }
+
+    .student-arm.left {
+      left: 1px;
+      transform: rotate(18deg);
+    }
+
+    .student-arm.right {
+      right: 1px;
+      transform: rotate(-18deg);
+    }
+
+    .student-leg {
+      position: absolute;
+      width: 6px;
+      height: 14px;
+      top: 29px;
+      border-radius: 4px;
+      background: #172033;
+      transform-origin: top center;
+    }
+
+    .student-leg.left {
+      left: 6px;
+      transform: rotate(7deg);
+    }
+
+    .student-leg.right {
+      right: 6px;
+      transform: rotate(-7deg);
+    }
+
+    .student-shoe {
+      position: absolute;
+      width: 8px;
+      height: 4px;
+      border-radius: 4px;
+      background: #050505;
+      top: 40px;
+    }
+
+    .student-shoe.left {
+      left: 3px;
+    }
+
+    .student-shoe.right {
+      right: 3px;
+    }
+
+    .student-backpack {
+      position: absolute;
+      width: 7px;
+      height: 13px;
+      left: 1px;
+      top: 14px;
+      border-radius: 4px;
+      background: linear-gradient(
+        145deg,
+        #f59e0b,
+        #b45309
+      );
+      z-index: -1;
+    }
+
+    .student-phone {
+      position: absolute;
+      width: 4px;
+      height: 7px;
+      right: -2px;
+      top: 22px;
+      border-radius: 1px;
+      background: #cbd5e1;
+      transform: rotate(-12deg);
+    }
+
+    @keyframes studentBob {
+      0%, 100% {
+        transform: translateY(0) rotate(-1deg);
+      }
+
+      50% {
+        transform: translateY(-3px) rotate(1deg);
+      }
+    }
+
+    .student-walk {
+      animation:
+        studentWalk 9s linear infinite,
+        studentBob 1.3s ease-in-out infinite;
+    }
+
+    @keyframes studentWalk {
+      0% {
+        transform: translateX(-35px);
+      }
+
+      100% {
+        transform: translateX(390px);
+      }
+    }
+
+
+    /* =========================
+       HEADER
+       ========================= */
+
     header,
     .container {
       position: relative;
@@ -129,9 +318,21 @@
       backdrop-filter: blur(10px);
     }
 
+    .logo-area {
+      position: relative;
+      display: inline-block;
+    }
+
     .logo {
       font-size: 48px;
       margin-bottom: 5px;
+    }
+
+    .logo-student {
+      right: -22px;
+      bottom: 3px;
+      transform: scale(0.72);
+      animation-delay: 0.4s;
     }
 
     header h1 {
@@ -145,6 +346,11 @@
       font-size: 14px;
     }
 
+
+    /* =========================
+       MAIN
+       ========================= */
+
     .container {
       width: 100%;
       max-width: 720px;
@@ -153,6 +359,8 @@
     }
 
     .card {
+      position: relative;
+      overflow: visible;
       background: rgba(15, 23, 42, 0.94);
       border: 1px solid #1e293b;
       border-radius: 22px;
@@ -191,6 +399,30 @@
       line-height: 1.5;
       margin-bottom: 15px;
     }
+
+
+    /* =========================
+       HERO MINI STUDENTS
+       ========================= */
+
+    .hero-student-left {
+      left: 13px;
+      top: 16px;
+      transform: scale(0.7);
+      animation-delay: 0.5s;
+    }
+
+    .hero-student-right {
+      right: 13px;
+      top: 17px;
+      transform: scale(0.7);
+      animation-delay: 1.4s;
+    }
+
+
+    /* =========================
+       FORM
+       ========================= */
 
     input,
     textarea,
@@ -284,7 +516,14 @@
       margin-bottom: 20px;
     }
 
+
+    /* =========================
+       FEATURES
+       ========================= */
+
     .feature {
+      position: relative;
+      overflow: visible;
       padding: 18px;
       margin-top: 12px;
       border-radius: 17px;
@@ -312,6 +551,43 @@
     .feature button {
       margin-top: 15px;
     }
+
+
+    /* =========================
+       FEATURE MINI STUDENTS
+       ========================= */
+
+    .feature-student {
+      right: 12px;
+      top: -18px;
+      transform: scale(0.55);
+      transform-origin: bottom right;
+    }
+
+    .feature-student.left {
+      left: 8px;
+      right: auto;
+      top: -14px;
+      transform-origin: bottom left;
+    }
+
+    .feature-student.walker {
+      top: auto;
+      right: auto;
+      left: -5px;
+      bottom: -9px;
+      transform: scale(0.48);
+      transform-origin: bottom left;
+    }
+
+    .feature-student:nth-child(2) {
+      animation-delay: 0.8s;
+    }
+
+
+    /* =========================
+       OTHER UI
+       ========================= */
 
     .section-title {
       margin-top: 25px;
@@ -383,12 +659,25 @@
     }
 
     @media (max-width: 500px) {
+
       header h1 {
         font-size: 30px;
       }
 
       .card {
         padding: 19px;
+      }
+
+      .hero-student-left {
+        left: 3px;
+      }
+
+      .hero-student-right {
+        right: 3px;
+      }
+
+      .feature-student {
+        right: 5px;
       }
     }
   </style>
@@ -408,15 +697,74 @@
   <div class="emoji e9">🔥</div>
 </div>
 
+
 <header>
-  <div class="logo">🚀</div>
+
+  <div class="logo-area">
+
+    <div class="logo">🚀</div>
+
+    <div class="mini-student logo-student">
+      <div class="student-head"></div>
+      <div class="student-hair"></div>
+      <div class="student-backpack"></div>
+      <div class="student-body">
+        <div class="student-shirt-line"></div>
+      </div>
+      <div class="student-arm left"></div>
+      <div class="student-arm right"></div>
+      <div class="student-leg left"></div>
+      <div class="student-leg right"></div>
+      <div class="student-shoe left"></div>
+      <div class="student-shoe right"></div>
+    </div>
+
+  </div>
+
   <h1>FresherPlug</h1>
+
   <p>Your fresher life, all in one place.</p>
+
 </header>
+
 
 <div class="container">
 
+
+  <!-- AUTH -->
+
   <div class="card hero" id="authSection">
+
+    <div class="mini-student hero-student-left">
+      <div class="student-head"></div>
+      <div class="student-hair"></div>
+      <div class="student-body">
+        <div class="student-shirt-line"></div>
+      </div>
+      <div class="student-arm left"></div>
+      <div class="student-arm right"></div>
+      <div class="student-leg left"></div>
+      <div class="student-leg right"></div>
+      <div class="student-shoe left"></div>
+      <div class="student-shoe right"></div>
+    </div>
+
+
+    <div class="mini-student hero-student-right">
+      <div class="student-head"></div>
+      <div class="student-hair"></div>
+      <div class="student-backpack"></div>
+      <div class="student-body">
+        <div class="student-shirt-line"></div>
+      </div>
+      <div class="student-arm left"></div>
+      <div class="student-arm right"></div>
+      <div class="student-leg left"></div>
+      <div class="student-leg right"></div>
+      <div class="student-shoe left"></div>
+      <div class="student-shoe right"></div>
+    </div>
+
 
     <div class="hero-icon">🎓</div>
 
@@ -454,7 +802,23 @@
   </div>
 
 
+  <!-- PROFILE -->
+
   <div class="card hidden" id="profileSection">
+
+    <div class="mini-student feature-student">
+      <div class="student-head"></div>
+      <div class="student-hair"></div>
+      <div class="student-body">
+        <div class="student-shirt-line"></div>
+      </div>
+      <div class="student-arm left"></div>
+      <div class="student-arm right"></div>
+      <div class="student-leg left"></div>
+      <div class="student-leg right"></div>
+      <div class="student-shoe left"></div>
+      <div class="student-shoe right"></div>
+    </div>
 
     <button class="back" onclick="backToLogin()">
       ← Back to Login
@@ -504,7 +868,24 @@
   </div>
 
 
+  <!-- MAIN APP -->
+
   <div class="card hidden" id="appSection">
+
+    <div class="mini-student feature-student left">
+      <div class="student-head"></div>
+      <div class="student-hair"></div>
+      <div class="student-backpack"></div>
+      <div class="student-body">
+        <div class="student-shirt-line"></div>
+      </div>
+      <div class="student-arm left"></div>
+      <div class="student-arm right"></div>
+      <div class="student-leg left"></div>
+      <div class="student-leg right"></div>
+      <div class="student-shoe left"></div>
+      <div class="student-shoe right"></div>
+    </div>
 
     <span class="badge">FRESHERPLUG 🚀</span>
 
@@ -516,7 +897,25 @@
       Explore FresherPlug
     </div>
 
+
+    <!-- FIND FRESHERS -->
+
     <div class="feature">
+
+      <div class="mini-student feature-student">
+        <div class="student-head"></div>
+        <div class="student-hair"></div>
+        <div class="student-body">
+          <div class="student-shirt-line"></div>
+        </div>
+        <div class="student-arm left"></div>
+        <div class="student-arm right"></div>
+        <div class="student-leg left"></div>
+        <div class="student-leg right"></div>
+        <div class="student-shoe left"></div>
+        <div class="student-shoe right"></div>
+      </div>
+
       <h3>🧑🏽‍🤝‍🧑🏽 Find Freshers</h3>
 
       <p>
@@ -529,10 +928,29 @@
       <button onclick="showFeatureInfo('friends')">
         👥 Explore Freshers
       </button>
+
     </div>
 
 
+    <!-- ACCOMMODATION -->
+
     <div class="feature">
+
+      <div class="mini-student feature-student left">
+        <div class="student-head"></div>
+        <div class="student-hair"></div>
+        <div class="student-backpack"></div>
+        <div class="student-body">
+          <div class="student-shirt-line"></div>
+        </div>
+        <div class="student-arm left"></div>
+        <div class="student-arm right"></div>
+        <div class="student-leg left"></div>
+        <div class="student-leg right"></div>
+        <div class="student-shoe left"></div>
+        <div class="student-shoe right"></div>
+      </div>
+
       <h3>🏠 Accommodation</h3>
 
       <p>
@@ -545,10 +963,28 @@
       <button onclick="showFeatureInfo('accommodation')">
         🏠 Find Accommodation
       </button>
+
     </div>
 
 
+    <!-- ROOMMATES -->
+
     <div class="feature">
+
+      <div class="mini-student feature-student">
+        <div class="student-head"></div>
+        <div class="student-hair"></div>
+        <div class="student-body">
+          <div class="student-shirt-line"></div>
+        </div>
+        <div class="student-arm left"></div>
+        <div class="student-arm right"></div>
+        <div class="student-leg left"></div>
+        <div class="student-leg right"></div>
+        <div class="student-shoe left"></div>
+        <div class="student-shoe right"></div>
+      </div>
+
       <h3>🤝 Roommates & Rent Sharing</h3>
 
       <p>
@@ -561,10 +997,28 @@
       <button onclick="showFeatureInfo('roommates')">
         🤝 Find Roommates
       </button>
+
     </div>
 
 
+    <!-- EVENTS -->
+
     <div class="feature">
+
+      <div class="mini-student feature-student left">
+        <div class="student-head"></div>
+        <div class="student-hair"></div>
+        <div class="student-body">
+          <div class="student-shirt-line"></div>
+        </div>
+        <div class="student-arm left"></div>
+        <div class="student-arm right"></div>
+        <div class="student-leg left"></div>
+        <div class="student-leg right"></div>
+        <div class="student-shoe left"></div>
+        <div class="student-shoe right"></div>
+      </div>
+
       <h3>🎉 Meet & Greet</h3>
 
       <p>
@@ -577,10 +1031,29 @@
       <button onclick="showFeatureInfo('events')">
         🎉 Discover Events
       </button>
+
     </div>
 
 
+    <!-- FOOD -->
+
     <div class="feature">
+
+      <div class="mini-student feature-student">
+        <div class="student-head"></div>
+        <div class="student-hair"></div>
+        <div class="student-phone"></div>
+        <div class="student-body">
+          <div class="student-shirt-line"></div>
+        </div>
+        <div class="student-arm left"></div>
+        <div class="student-arm right"></div>
+        <div class="student-leg left"></div>
+        <div class="student-leg right"></div>
+        <div class="student-shoe left"></div>
+        <div class="student-shoe right"></div>
+      </div>
+
       <h3>🍔 Food</h3>
 
       <p>
@@ -593,10 +1066,29 @@
       <button onclick="showFeatureInfo('food')">
         🍔 Discover Food
       </button>
+
     </div>
 
 
+    <!-- GIST -->
+
     <div class="feature">
+
+      <div class="mini-student feature-student left">
+        <div class="student-head"></div>
+        <div class="student-hair"></div>
+        <div class="student-phone"></div>
+        <div class="student-body">
+          <div class="student-shirt-line"></div>
+        </div>
+        <div class="student-arm left"></div>
+        <div class="student-arm right"></div>
+        <div class="student-leg left"></div>
+        <div class="student-leg right"></div>
+        <div class="student-shoe left"></div>
+        <div class="student-shoe right"></div>
+      </div>
+
       <h3>🗣️ UNIBEN Gist</h3>
 
       <p>
@@ -607,10 +1099,28 @@
       <button onclick="showFeatureInfo('gist')">
         🗣️ Open Gist
       </button>
+
     </div>
 
 
+    <!-- WHATSAPP -->
+
     <div class="feature">
+
+      <div class="mini-student feature-student">
+        <div class="student-head"></div>
+        <div class="student-hair"></div>
+        <div class="student-backpack"></div>
+        <div class="student-body">
+          <div class="student-shirt-line"></div>
+        </div>
+        <div class="student-arm left"></div>
+        <div class="student-arm right"></div>
+        <div class="student-leg left"></div>
+        <div class="student-leg right"></div>
+        <div class="student-shoe left"></div>
+        <div class="student-shoe right"></div>
+      </div>
 
       <h3>💬 FresherPlug WhatsApp Community</h3>
 
@@ -633,7 +1143,24 @@
       Grow With FresherPlug
     </div>
 
+
+    <!-- PARTNER -->
+
     <div class="feature">
+
+      <div class="mini-student feature-student left">
+        <div class="student-head"></div>
+        <div class="student-hair"></div>
+        <div class="student-body">
+          <div class="student-shirt-line"></div>
+        </div>
+        <div class="student-arm left"></div>
+        <div class="student-arm right"></div>
+        <div class="student-leg left"></div>
+        <div class="student-leg right"></div>
+        <div class="student-shoe left"></div>
+        <div class="student-shoe right"></div>
+      </div>
 
       <h3>🤝 Partner With FresherPlug</h3>
 
@@ -660,6 +1187,8 @@
   </div>
 
 
+  <!-- FEATURE SECTION -->
+
   <div class="card hidden" id="featureSection">
 
     <button class="back" onclick="backToApp()">
@@ -671,7 +1200,24 @@
   </div>
 
 
+  <!-- PARTNER SECTION -->
+
   <div class="card hidden" id="partnerSection">
+
+    <div class="mini-student feature-student">
+      <div class="student-head"></div>
+      <div class="student-hair"></div>
+      <div class="student-backpack"></div>
+      <div class="student-body">
+        <div class="student-shirt-line"></div>
+      </div>
+      <div class="student-arm left"></div>
+      <div class="student-arm right"></div>
+      <div class="student-leg left"></div>
+      <div class="student-leg right"></div>
+      <div class="student-shoe left"></div>
+      <div class="student-shoe right"></div>
+    </div>
 
     <button class="back" onclick="backToApp()">
       ← Back to FresherPlug
@@ -739,12 +1285,17 @@
 
 </div>
 
+
 <footer>
   FresherPlug 🚀 — Made for Freshers
 </footer>
 
 
 <script>
+
+  /* =========================
+     SUPABASE
+     ========================= */
 
   const SUPABASE_URL =
     "https://begcuzzygthqcxbvxkoe.supabase.co";
@@ -758,9 +1309,12 @@
       SUPABASE_KEY
     );
 
-
   let currentUser = null;
 
+
+  /* =========================
+     MESSAGES
+     ========================= */
 
   function showMessage(text) {
 
@@ -770,6 +1324,7 @@
     box.textContent = text;
 
     box.style.display = "block";
+
   }
 
 
@@ -781,6 +1336,7 @@
     box.textContent = text;
 
     box.style.display = "block";
+
   }
 
 
@@ -792,17 +1348,26 @@
     box.textContent = text;
 
     box.style.display = "block";
+
   }
 
+
+  /* =========================
+     CREATE ACCOUNT
+     ========================= */
 
   async function createAccount() {
 
     const email =
-      document.getElementById("email").value.trim();
+      document
+        .getElementById("email")
+        .value
+        .trim();
 
     const password =
-      document.getElementById("password").value;
-
+      document
+        .getElementById("password")
+        .value;
 
     if (!email || !password) {
 
@@ -813,7 +1378,6 @@
       return;
     }
 
-
     if (password.length < 6) {
 
       showMessage(
@@ -823,7 +1387,6 @@
       return;
     }
 
-
     const { data, error } =
       await supabaseClient.auth.signUp({
 
@@ -832,7 +1395,6 @@
 
       });
 
-
     if (error) {
 
       showMessage(error.message);
@@ -840,11 +1402,9 @@
       return;
     }
 
-
     if (data.user) {
 
       currentUser = data.user;
-
 
       if (data.session) {
 
@@ -863,14 +1423,22 @@
   }
 
 
+  /* =========================
+     LOGIN
+     ========================= */
+
   async function login() {
 
     const email =
-      document.getElementById("email").value.trim();
+      document
+        .getElementById("email")
+        .value
+        .trim();
 
     const password =
-      document.getElementById("password").value;
-
+      document
+        .getElementById("password")
+        .value;
 
     if (!email || !password) {
 
@@ -881,7 +1449,6 @@
       return;
     }
 
-
     const { data, error } =
       await supabaseClient.auth.signInWithPassword({
 
@@ -890,14 +1457,12 @@
 
       });
 
-
     if (error) {
 
       showMessage(error.message);
 
       return;
     }
-
 
     currentUser = data.user;
 
@@ -906,10 +1471,13 @@
   }
 
 
+  /* =========================
+     CHECK PROFILE
+     ========================= */
+
   async function checkProfile() {
 
     if (!currentUser) return;
-
 
     const { data, error } =
       await supabaseClient
@@ -919,7 +1487,6 @@
         )
         .eq("id", currentUser.id)
         .maybeSingle();
-
 
     if (error) {
 
@@ -931,7 +1498,6 @@
 
       return;
     }
-
 
     if (data) {
 
@@ -955,7 +1521,6 @@
         .getElementById("appSection")
         .classList.remove("hidden");
 
-
       document
         .getElementById("welcomeText")
         .textContent =
@@ -969,6 +1534,10 @@
 
   }
 
+
+  /* =========================
+     SHOW PROFILE
+     ========================= */
 
   function showProfile() {
 
@@ -995,6 +1564,10 @@
   }
 
 
+  /* =========================
+     SAVE PROFILE
+     ========================= */
+
   async function saveProfile() {
 
     if (!currentUser) {
@@ -1006,27 +1579,35 @@
       return;
     }
 
-
     const fullName =
-      document.getElementById("fullName")
-        .value.trim();
+      document
+        .getElementById("fullName")
+        .value
+        .trim();
 
     const university =
-      document.getElementById("university")
-        .value.trim();
+      document
+        .getElementById("university")
+        .value
+        .trim();
 
     const department =
-      document.getElementById("department")
-        .value.trim();
+      document
+        .getElementById("department")
+        .value
+        .trim();
 
     const level =
-      document.getElementById("level")
-        .value.trim();
+      document
+        .getElementById("level")
+        .value
+        .trim();
 
     const aboutMe =
-      document.getElementById("aboutMe")
-        .value.trim();
-
+      document
+        .getElementById("aboutMe")
+        .value
+        .trim();
 
     if (!fullName) {
 
@@ -1036,7 +1617,6 @@
 
       return;
     }
-
 
     const { error } =
       await supabaseClient
@@ -1058,7 +1638,6 @@
 
         );
 
-
     if (error) {
 
       showProfileMessage(
@@ -1068,7 +1647,6 @@
       return;
     }
 
-
     document
       .getElementById("profileSection")
       .classList.add("hidden");
@@ -1076,7 +1654,6 @@
     document
       .getElementById("appSection")
       .classList.remove("hidden");
-
 
     document
       .getElementById("welcomeText")
@@ -1087,6 +1664,10 @@
 
   }
 
+
+  /* =========================
+     FEATURE INFORMATION
+     ========================= */
 
   function showFeatureInfo(type) {
 
@@ -1247,6 +1828,7 @@
 
     content.innerHTML = html;
 
+
     document
       .getElementById("appSection")
       .classList.add("hidden");
@@ -1266,6 +1848,10 @@
 
   }
 
+
+  /* =========================
+     PARTNER SECTION
+     ========================= */
 
   function openPartnerSection() {
 
@@ -1290,7 +1876,7 @@
 
 
   /* =========================
-     SAVE PARTNER APPLICATION
+     PARTNER APPLICATION
      ========================= */
 
   async function submitPartnerInterest() {
@@ -1304,27 +1890,34 @@
       return;
     }
 
-
     const name =
-      document.getElementById("partnerName")
-        .value.trim();
+      document
+        .getElementById("partnerName")
+        .value
+        .trim();
 
     const business =
-      document.getElementById("partnerBusiness")
-        .value.trim();
+      document
+        .getElementById("partnerBusiness")
+        .value
+        .trim();
 
     const type =
-      document.getElementById("partnerType")
+      document
+        .getElementById("partnerType")
         .value;
 
     const phone =
-      document.getElementById("partnerPhone")
-        .value.trim();
+      document
+        .getElementById("partnerPhone")
+        .value
+        .trim();
 
     const description =
-      document.getElementById("partnerDescription")
-        .value.trim();
-
+      document
+        .getElementById("partnerDescription")
+        .value
+        .trim();
 
     if (!name || !business || !type || !phone) {
 
@@ -1335,11 +1928,9 @@
       return;
     }
 
-
     showPartnerMessage(
       "Submitting your partnership application... ⏳"
     );
-
 
     const { error } =
       await supabaseClient
@@ -1362,7 +1953,6 @@
 
         });
 
-
     if (error) {
 
       console.error(
@@ -1377,11 +1967,9 @@
       return;
     }
 
-
     showPartnerMessage(
       "Application submitted successfully! 🤝🚀 We'll review your partnership request."
     );
-
 
     document
       .getElementById("partnerName")
@@ -1406,6 +1994,10 @@
   }
 
 
+  /* =========================
+     NAVIGATION
+     ========================= */
+
   function backToApp() {
 
     document
@@ -1428,12 +2020,7 @@
   }
 
 
-  async function backToLogin() {
-
-    await supabaseClient.auth.signOut();
-
-    currentUser = null;
-
+  function backToLogin() {
 
     document
       .getElementById("profileSection")
@@ -1458,12 +2045,15 @@
   }
 
 
+  /* =========================
+     LOGOUT
+     ========================= */
+
   async function logout() {
 
     await supabaseClient.auth.signOut();
 
     currentUser = null;
-
 
     document
       .getElementById("appSection")
