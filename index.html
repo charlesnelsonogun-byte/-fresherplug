@@ -51,74 +51,27 @@
       animation: floatUp linear infinite;
     }
 
-    .e1 {
-      left: 4%;
-      animation-duration: 13s;
-      animation-delay: 0s;
-    }
-
-    .e2 {
-      left: 17%;
-      animation-duration: 17s;
-      animation-delay: 3s;
-    }
-
-    .e3 {
-      left: 31%;
-      animation-duration: 15s;
-      animation-delay: 6s;
-    }
-
-    .e4 {
-      left: 47%;
-      animation-duration: 19s;
-      animation-delay: 1s;
-    }
-
-    .e5 {
-      left: 62%;
-      animation-duration: 14s;
-      animation-delay: 5s;
-    }
-
-    .e6 {
-      left: 77%;
-      animation-duration: 18s;
-      animation-delay: 2s;
-    }
-
-    .e7 {
-      left: 91%;
-      animation-duration: 16s;
-      animation-delay: 8s;
-    }
-
-    .e8 {
-      left: 11%;
-      animation-duration: 21s;
-      animation-delay: 10s;
-    }
-
-    .e9 {
-      left: 55%;
-      animation-duration: 20s;
-      animation-delay: 12s;
-    }
+    .e1 { left: 4%; animation-duration: 13s; animation-delay: 0s; }
+    .e2 { left: 17%; animation-duration: 17s; animation-delay: 3s; }
+    .e3 { left: 31%; animation-duration: 15s; animation-delay: 6s; }
+    .e4 { left: 47%; animation-duration: 19s; animation-delay: 1s; }
+    .e5 { left: 62%; animation-duration: 14s; animation-delay: 5s; }
+    .e6 { left: 77%; animation-duration: 18s; animation-delay: 2s; }
+    .e7 { left: 91%; animation-duration: 16s; animation-delay: 8s; }
+    .e8 { left: 11%; animation-duration: 21s; animation-delay: 10s; }
+    .e9 { left: 55%; animation-duration: 20s; animation-delay: 12s; }
 
     @keyframes floatUp {
       0% {
         transform: translateY(0) rotate(0deg) scale(0.8);
       }
-
       50% {
         transform: translateY(-55vh) rotate(180deg) scale(1.15);
       }
-
       100% {
         transform: translateY(-115vh) rotate(360deg) scale(0.8);
       }
     }
-
 
     /* =========================
        MINI 3D STUDENTS
@@ -141,11 +94,7 @@
       left: 7px;
       top: 0;
       border-radius: 50%;
-      background: linear-gradient(
-        145deg,
-        #9a633e,
-        #5b321f
-      );
+      background: linear-gradient(145deg, #9a633e, #5b321f);
       box-shadow:
         inset -2px -2px 2px rgba(0,0,0,0.35),
         1px 2px 3px rgba(0,0,0,0.45);
@@ -170,11 +119,7 @@
       left: 4px;
       top: 12px;
       border-radius: 5px 5px 3px 3px;
-      background: linear-gradient(
-        145deg,
-        #6366f1,
-        #312e81
-      );
+      background: linear-gradient(145deg, #6366f1, #312e81);
       box-shadow:
         inset -2px -2px 3px rgba(0,0,0,0.3),
         1px 3px 4px rgba(0,0,0,0.4);
@@ -254,11 +199,7 @@
       left: 1px;
       top: 14px;
       border-radius: 4px;
-      background: linear-gradient(
-        145deg,
-        #f59e0b,
-        #b45309
-      );
+      background: linear-gradient(145deg, #f59e0b, #b45309);
       z-index: -1;
     }
 
@@ -277,7 +218,6 @@
       0%, 100% {
         transform: translateY(0) rotate(-1deg);
       }
-
       50% {
         transform: translateY(-3px) rotate(1deg);
       }
@@ -293,12 +233,10 @@
       0% {
         transform: translateX(-35px);
       }
-
       100% {
         transform: translateX(390px);
       }
     }
-
 
     /* =========================
        HEADER
@@ -345,7 +283,6 @@
       color: #94a3b8;
       font-size: 14px;
     }
-
 
     /* =========================
        MAIN
@@ -400,11 +337,6 @@
       margin-bottom: 15px;
     }
 
-
-    /* =========================
-       HERO MINI STUDENTS
-       ========================= */
-
     .hero-student-left {
       left: 13px;
       top: 16px;
@@ -418,7 +350,6 @@
       transform: scale(0.7);
       animation-delay: 1.4s;
     }
-
 
     /* =========================
        FORM
@@ -447,6 +378,21 @@
     textarea {
       min-height: 110px;
       resize: vertical;
+    }
+
+    input[type="file"] {
+      padding: 12px;
+      cursor: pointer;
+    }
+
+    input[type="file"]::file-selector-button {
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid #334155;
+      border-radius: 9px;
+      padding: 9px 12px;
+      margin-right: 10px;
+      cursor: pointer;
     }
 
     button {
@@ -542,6 +488,83 @@
       margin-bottom: 20px;
     }
 
+    /* =========================
+       PARTNER UI
+       ========================= */
+
+    .partner-section-title {
+      margin-top: 20px;
+      margin-bottom: 4px;
+      color: #e2e8f0;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .partner-helper {
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.4;
+      margin-top: 6px;
+    }
+
+    .partner-status-box {
+      margin-top: 15px;
+      padding: 14px;
+      border-radius: 14px;
+      background: #0b2417;
+      border: 1px solid #14532d;
+      color: #bbf7d0;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .photo-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      margin-top: 12px;
+    }
+
+    .photo-preview {
+      position: relative;
+      height: 95px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #263247;
+      background: #080d19;
+    }
+
+    .photo-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-number {
+      position: absolute;
+      left: 6px;
+      bottom: 6px;
+      padding: 4px 7px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.72);
+      color: white;
+      font-size: 10px;
+    }
+
+    .partner-listing-note {
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 15px;
+      background: #0a1020;
+      border: 1px solid #1e293b;
+    }
+
+    .partner-listing-note p {
+      color: #94a3b8;
+      font-size: 13px;
+      line-height: 1.5;
+    }
 
     /* =========================
        FEATURES
@@ -578,11 +601,6 @@
       margin-top: 15px;
     }
 
-
-    /* =========================
-       FEATURE MINI STUDENTS
-       ========================= */
-
     .feature-student {
       right: 12px;
       top: -18px;
@@ -609,7 +627,6 @@
     .feature-student:nth-child(2) {
       animation-delay: 0.8s;
     }
-
 
     /* =========================
        OTHER UI
@@ -703,7 +720,6 @@
     }
 
     @media (max-width: 500px) {
-
       header h1 {
         font-size: 30px;
       }
@@ -727,6 +743,10 @@
       .account-grid {
         grid-template-columns: 1fr;
       }
+
+      .photo-preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
@@ -744,7 +764,6 @@
   <div class="emoji e8">📚</div>
   <div class="emoji e9">🔥</div>
 </div>
-
 
 <header>
 
@@ -775,9 +794,7 @@
 
 </header>
 
-
 <div class="container">
-
 
   <!-- AUTH -->
 
@@ -797,7 +814,6 @@
       <div class="student-shoe right"></div>
     </div>
 
-
     <div class="mini-student hero-student-right">
       <div class="student-head"></div>
       <div class="student-hair"></div>
@@ -812,7 +828,6 @@
       <div class="student-shoe left"></div>
       <div class="student-shoe right"></div>
     </div>
-
 
     <div class="hero-icon">🎓</div>
 
@@ -852,7 +867,6 @@
     <div id="message"></div>
 
   </div>
-
 
   <!-- PROFILE -->
 
@@ -919,7 +933,6 @@
 
   </div>
 
-
   <!-- RESET PASSWORD REQUEST -->
 
   <div class="card hidden" id="resetSection">
@@ -956,7 +969,6 @@
 
   </div>
 
-
   <!-- UPDATE PASSWORD -->
 
   <div class="card hidden" id="passwordSection">
@@ -988,7 +1000,6 @@
     <div id="passwordMessage"></div>
 
   </div>
-
 
   <!-- MAIN APP -->
 
@@ -1037,7 +1048,6 @@
       Explore FresherPlug
     </div>
 
-
     <!-- FIND FRESHERS -->
 
     <div class="feature">
@@ -1070,7 +1080,6 @@
       </button>
 
     </div>
-
 
     <!-- ACCOMMODATION -->
 
@@ -1106,7 +1115,6 @@
 
     </div>
 
-
     <!-- ROOMMATES -->
 
     <div class="feature">
@@ -1140,7 +1148,6 @@
 
     </div>
 
-
     <!-- EVENTS -->
 
     <div class="feature">
@@ -1173,7 +1180,6 @@
       </button>
 
     </div>
-
 
     <!-- FOOD -->
 
@@ -1209,7 +1215,6 @@
 
     </div>
 
-
     <!-- GIST -->
 
     <div class="feature">
@@ -1241,7 +1246,6 @@
       </button>
 
     </div>
-
 
     <!-- WHATSAPP -->
 
@@ -1278,11 +1282,9 @@
 
     </div>
 
-
     <div class="section-title">
       Grow With FresherPlug
     </div>
-
 
     <!-- PARTNER -->
 
@@ -1319,13 +1321,11 @@
 
     </div>
 
-
     <button class="danger" onclick="logout()">
       🚪 Log Out
     </button>
 
   </div>
-
 
   <!-- FEATURE SECTION -->
 
@@ -1338,7 +1338,6 @@
     <div id="featureContent"></div>
 
   </div>
-
 
   <!-- PARTNER SECTION -->
 
@@ -1368,9 +1367,19 @@
     <h2>Become a FresherPlug Partner 🚀</h2>
 
     <p class="subtitle">
-      We're building a platform where businesses and services
-      can reach freshers directly.
+      Put your business, service, products, accommodation or events
+      in front of freshers.
     </p>
+
+    <div class="partner-status-box">
+      ⚡ <strong>Automatic listing:</strong><br>
+      Once you submit your information, your partner listing is
+      designed to go live automatically under the category you select.
+    </div>
+
+    <div class="partner-section-title">
+      Partner Information
+    </div>
 
     <input
       id="partnerName"
@@ -1384,14 +1393,23 @@
       placeholder="🏢 Business / Brand name"
     >
 
+    <div class="partner-section-title">
+      Choose Your Category
+    </div>
+
     <select id="partnerType">
-      <option value="">Choose partnership type</option>
+      <option value="">Choose a category</option>
       <option value="Accommodation">🏠 Accommodation</option>
-      <option value="Food">🍔 Food Vendor</option>
+      <option value="Food">🍔 Food & Drinks</option>
       <option value="Events">🎉 Events</option>
       <option value="Student Services">🎓 Student Services</option>
       <option value="Other">💼 Other</option>
     </select>
+
+    <p class="partner-helper">
+      Select the category that best describes what you offer.
+      This helps FresherPlug place your listing correctly.
+    </p>
 
     <input
       id="partnerPhone"
@@ -1401,23 +1419,88 @@
 
     <textarea
       id="partnerDescription"
-      placeholder="💬 Tell us about your service..."
+      placeholder="💬 Tell freshers about your business, products or services..."
     ></textarea>
 
-    <button class="partner" onclick="submitPartnerInterest()">
-      🚀 Submit Partnership Interest
+    <div class="partner-section-title">
+      Social Media & Website
+    </div>
+
+    <input
+      id="partnerInstagram"
+      type="url"
+      placeholder="📸 Instagram link e.g. https://instagram.com/yourpage"
+    >
+
+    <input
+      id="partnerTikTok"
+      type="url"
+      placeholder="🎵 TikTok link e.g. https://tiktok.com/@yourpage"
+    >
+
+    <input
+      id="partnerWebsite"
+      type="url"
+      placeholder="🌐 Website link (optional)"
+    >
+
+    <input
+      id="partnerWhatsApp"
+      type="url"
+      placeholder="💚 WhatsApp link (optional)"
+    >
+
+    <div class="partner-section-title">
+      Photos
+    </div>
+
+    <p class="partner-helper">
+      Upload photos of what you sell, your services, rooms,
+      food, venue or business. You can select multiple photos.
+    </p>
+
+    <input
+      id="partnerImages"
+      type="file"
+      accept="image/*"
+      multiple
+      onchange="previewPartnerImages()"
+    >
+
+    <div
+      id="photoPreviewGrid"
+      class="photo-preview-grid"
+    ></div>
+
+    <p class="partner-helper">
+      Your first selected photo will be treated as the cover
+      photo when we connect this form to Supabase Storage.
+    </p>
+
+    <button
+      class="partner"
+      onclick="submitPartnerInterest()"
+    >
+      🚀 Publish My Partner Listing
     </button>
 
     <div id="partnerMessage"></div>
 
-    <div class="partner-list">
+    <div class="partner-listing-note">
       <p>
-        <strong>What partners can eventually get:</strong><br><br>
-        🏠 Accommodation listings<br>
-        🍔 Food/vendor listings<br>
-        🎉 Event promotion<br>
-        📢 Featured placement<br>
-        👥 Access to a growing fresher audience
+        <strong>What your listing can show:</strong><br><br>
+        🏷️ Category<br>
+        🏢 Business / brand name<br>
+        📝 Description<br>
+        📸 Product & service photos<br>
+        📱 Phone / WhatsApp<br>
+        📸 Instagram<br>
+        🎵 TikTok<br>
+        🌐 Website<br><br>
+
+        ⚡ Listings are designed for automatic publishing after
+        submission. Users can later report listings that violate
+        FresherPlug rules.
       </p>
     </div>
 
@@ -1425,11 +1508,9 @@
 
 </div>
 
-
 <footer>
   FresherPlug 🚀 — Made for Freshers
 </footer>
-
 
 <script>
 
@@ -2196,6 +2277,81 @@
 
 
   /* =========================
+     PARTNER IMAGE PREVIEW
+     ========================= */
+
+  function previewPartnerImages() {
+
+    const input =
+      document.getElementById("partnerImages");
+
+    const preview =
+      document.getElementById("photoPreviewGrid");
+
+    preview.innerHTML = "";
+
+    if (!input.files || input.files.length === 0) {
+      return;
+    }
+
+    const maxPhotos = 8;
+
+    const files =
+      Array.from(input.files).slice(0, maxPhotos);
+
+    files.forEach((file, index) => {
+
+      if (!file.type.startsWith("image/")) {
+        return;
+      }
+
+      const reader =
+        new FileReader();
+
+      reader.onload = function(event) {
+
+        const box =
+          document.createElement("div");
+
+        box.className =
+          "photo-preview";
+
+        box.innerHTML = `
+          <img
+            src="${event.target.result}"
+            alt="Partner photo ${index + 1}"
+          >
+          <span class="photo-number">
+            ${index === 0 ? "⭐ Cover" : "Photo " + (index + 1)}
+          </span>
+        `;
+
+        preview.appendChild(box);
+
+      };
+
+      reader.readAsDataURL(file);
+
+    });
+
+    if (input.files.length > maxPhotos) {
+
+      showPartnerMessage(
+        "You selected more than 8 photos. The first 8 will be used."
+      );
+
+    } else {
+
+      document
+        .getElementById("partnerMessage")
+        .style.display = "none";
+
+    }
+
+  }
+
+
+  /* =========================
      FEATURE INFORMATION
      ========================= */
 
@@ -2205,7 +2361,6 @@
       document.getElementById("featureContent");
 
     let html = "";
-
 
     if (type === "friends") {
 
@@ -2231,7 +2386,6 @@
 
     }
 
-
     if (type === "accommodation") {
 
       html = `
@@ -2241,12 +2395,12 @@
 
         <p class="subtitle">
           FresherPlug will connect students with accommodation
-          partners and verified listings around their university.
+          partners and listings around their university.
         </p>
 
         <div class="success-box">
-          🤝 We're currently building the partner network that
-          will provide the actual accommodation listings.
+          🤝 Partner listings can be published automatically
+          under the accommodation category.
         </div>
 
         <button class="partner" onclick="openPartnerSection()">
@@ -2255,7 +2409,6 @@
       `;
 
     }
-
 
     if (type === "roommates") {
 
@@ -2277,7 +2430,6 @@
 
     }
 
-
     if (type === "events") {
 
       html = `
@@ -2291,8 +2443,8 @@
         </p>
 
         <div class="success-box">
-          🎉 Event organizers will eventually be able to
-          submit events to FresherPlug.
+          🎉 Event partners can publish their services
+          under the Events category.
         </div>
 
         <button class="partner" onclick="openPartnerSection()">
@@ -2301,7 +2453,6 @@
       `;
 
     }
-
 
     if (type === "food") {
 
@@ -2316,8 +2467,8 @@
         </p>
 
         <div class="success-box">
-          🍔 Food partners will provide the actual vendors,
-          menus and services shown here.
+          🍔 Food partners can publish their listings,
+          photos and services under Food & Drinks.
         </div>
 
         <button class="partner" onclick="openPartnerSection()">
@@ -2326,7 +2477,6 @@
       `;
 
     }
-
 
     if (type === "gist") {
 
@@ -2355,9 +2505,7 @@
 
     }
 
-
     content.innerHTML = html;
-
 
     document
       .getElementById("appSection")
@@ -2449,18 +2597,61 @@
         .value
         .trim();
 
+    const instagram =
+      document
+        .getElementById("partnerInstagram")
+        .value
+        .trim();
+
+    const tiktok =
+      document
+        .getElementById("partnerTikTok")
+        .value
+        .trim();
+
+    const website =
+      document
+        .getElementById("partnerWebsite")
+        .value
+        .trim();
+
+    const whatsapp =
+      document
+        .getElementById("partnerWhatsApp")
+        .value
+        .trim();
+
+    const imageInput =
+      document.getElementById("partnerImages");
+
     if (!name || !business || !type || !phone) {
 
       showPartnerMessage(
-        "Please fill in your name, business, partnership type and contact number."
+        "Please fill in your name, business, category and contact number."
+      );
+
+      return;
+    }
+
+    if (imageInput.files.length > 8) {
+
+      showPartnerMessage(
+        "Please select a maximum of 8 photos."
       );
 
       return;
     }
 
     showPartnerMessage(
-      "Submitting your partnership application... ⏳"
+      "Preparing your partner listing... ⏳"
     );
+
+    /*
+      AUTO-APPROVAL:
+
+      The listing is intentionally marked as approved here.
+      Supabase Storage/database setup will be connected next.
+    */
 
     const { error } =
       await supabaseClient
@@ -2479,7 +2670,15 @@
 
           description: description,
 
-          status: "pending"
+          instagram_url: instagram || null,
+
+          tiktok_url: tiktok || null,
+
+          website_url: website || null,
+
+          whatsapp_url: whatsapp || null,
+
+          status: "approved"
 
         });
 
@@ -2491,14 +2690,14 @@
       );
 
       showPartnerMessage(
-        "We couldn't submit your application. Please try again."
+        "Your partner form is ready, but Supabase needs the new partner fields before this can be published. We'll connect that in the next setup phase."
       );
 
       return;
     }
 
     showPartnerMessage(
-      "Application submitted successfully! 🤝🚀 We'll review your partnership request."
+      "Your partner listing has been published automatically! 🚀🎉"
     );
 
     document
@@ -2520,6 +2719,28 @@
     document
       .getElementById("partnerDescription")
       .value = "";
+
+    document
+      .getElementById("partnerInstagram")
+      .value = "";
+
+    document
+      .getElementById("partnerTikTok")
+      .value = "";
+
+    document
+      .getElementById("partnerWebsite")
+      .value = "";
+
+    document
+      .getElementById("partnerWhatsApp")
+      .value = "";
+
+    imageInput.value = "";
+
+    document
+      .getElementById("photoPreviewGrid")
+      .innerHTML = "";
 
   }
 
