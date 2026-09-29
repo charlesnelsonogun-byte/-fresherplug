@@ -495,13 +495,39 @@
       border: 1px solid #4c1d2a;
     }
 
+    button.account-button {
+      background: #111a2d;
+      border: 1px solid #263247;
+      color: #cbd5e1;
+    }
+
+    button.account-button:hover {
+      border-color: #6366f1;
+    }
+
+    .forgot-button {
+      background: transparent;
+      color: #a5b4fc;
+      border: none;
+      padding: 9px;
+      margin-top: 5px;
+      font-size: 13px;
+    }
+
+    .forgot-button:hover {
+      transform: none;
+      opacity: 0.85;
+    }
+
     .hidden {
       display: none !important;
     }
 
     #message,
     #profileMessage,
-    #partnerMessage {
+    #partnerMessage,
+    #resetMessage,
+    #passwordMessage {
       display: none;
       margin-top: 13px;
       padding: 12px;
@@ -649,6 +675,24 @@
       line-height: 1.5;
     }
 
+    .account-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .account-grid button {
+      margin-top: 0;
+    }
+
+    .password-note {
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.4;
+      margin-top: 10px;
+    }
+
     footer {
       text-align: center;
       color: #64748b;
@@ -678,6 +722,10 @@
 
       .feature-student {
         right: 5px;
+      }
+
+      .account-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -797,6 +845,10 @@
       🔑 Log In
     </button>
 
+    <button class="forgot-button" onclick="openResetPassword()">
+      🔐 Forgot your password?
+    </button>
+
     <div id="message"></div>
 
   </div>
@@ -820,13 +872,13 @@
       <div class="student-shoe right"></div>
     </div>
 
-    <button class="back" onclick="backToLogin()">
-      ← Back to Login
+    <button class="back" onclick="backFromProfile()">
+      ← Back
     </button>
 
-    <h2>Build Your Fresher Profile 👤</h2>
+    <h2 id="profileTitle">Build Your Fresher Profile 👤</h2>
 
-    <p class="subtitle">
+    <p id="profileSubtitle" class="subtitle">
       Tell other freshers a little about yourself.
     </p>
 
@@ -868,6 +920,76 @@
   </div>
 
 
+  <!-- RESET PASSWORD REQUEST -->
+
+  <div class="card hidden" id="resetSection">
+
+    <button class="back" onclick="backToLogin()">
+      ← Back to Login
+    </button>
+
+    <span class="badge">ACCOUNT SECURITY 🔐</span>
+
+    <h2>Reset Your Password</h2>
+
+    <p class="subtitle">
+      Enter the email connected to your FresherPlug account
+      and we'll send you a secure password reset link.
+    </p>
+
+    <input
+      id="resetEmail"
+      type="email"
+      placeholder="📧 Your account email"
+    >
+
+    <button onclick="sendPasswordReset()">
+      📩 Send Reset Link
+    </button>
+
+    <div id="resetMessage"></div>
+
+    <p class="password-note">
+      If an account exists with that email, Supabase will send
+      a password reset message.
+    </p>
+
+  </div>
+
+
+  <!-- UPDATE PASSWORD -->
+
+  <div class="card hidden" id="passwordSection">
+
+    <span class="badge">NEW PASSWORD 🔐</span>
+
+    <h2>Create a New Password</h2>
+
+    <p class="subtitle">
+      Choose a new password for your FresherPlug account.
+    </p>
+
+    <input
+      id="newPassword"
+      type="password"
+      placeholder="🔐 New password"
+    >
+
+    <input
+      id="confirmPassword"
+      type="password"
+      placeholder="🔐 Confirm new password"
+    >
+
+    <button onclick="updatePassword()">
+      🔑 Update Password
+    </button>
+
+    <div id="passwordMessage"></div>
+
+  </div>
+
+
   <!-- MAIN APP -->
 
   <div class="card hidden" id="appSection">
@@ -892,6 +1014,24 @@
     <h2>Welcome back! 👋</h2>
 
     <p id="welcomeText" class="welcome"></p>
+
+    <div class="account-grid">
+
+      <button
+        class="account-button"
+        onclick="openEditProfile()"
+      >
+        ✏️ Edit Profile
+      </button>
+
+      <button
+        class="account-button"
+        onclick="openResetPassword()"
+      >
+        🔐 Reset Password
+      </button>
+
+    </div>
 
     <div class="section-title">
       Explore FresherPlug
@@ -1310,6 +1450,7 @@
     );
 
   let currentUser = null;
+  let editingProfile = false;
 
 
   /* =========================
@@ -1322,7 +1463,6 @@
       document.getElementById("message");
 
     box.textContent = text;
-
     box.style.display = "block";
 
   }
@@ -1334,7 +1474,6 @@
       document.getElementById("profileMessage");
 
     box.textContent = text;
-
     box.style.display = "block";
 
   }
@@ -1346,8 +1485,66 @@
       document.getElementById("partnerMessage");
 
     box.textContent = text;
-
     box.style.display = "block";
+
+  }
+
+
+  function showResetMessage(text) {
+
+    const box =
+      document.getElementById("resetMessage");
+
+    box.textContent = text;
+    box.style.display = "block";
+
+  }
+
+
+  function showPasswordMessage(text) {
+
+    const box =
+      document.getElementById("passwordMessage");
+
+    box.textContent = text;
+    box.style.display = "block";
+
+  }
+
+
+  /* =========================
+     HIDE ALL MAIN SECTIONS
+     ========================= */
+
+  function hideAllSections() {
+
+    document
+      .getElementById("authSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("profileSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("resetSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("passwordSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("appSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("featureSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("partnerSection")
+      .classList.add("hidden");
 
   }
 
@@ -1408,12 +1605,12 @@
 
       if (data.session) {
 
-        showProfile();
+        await checkProfile();
 
       } else {
 
         showMessage(
-          "Account created! 📧 Check your email to verify your account."
+          "Account created successfully! 🚀 Please log in to continue."
         );
 
       }
@@ -1497,36 +1694,16 @@
       showProfile();
 
       return;
+
     }
 
     if (data) {
 
-      document
-        .getElementById("authSection")
-        .classList.add("hidden");
-
-      document
-        .getElementById("profileSection")
-        .classList.add("hidden");
-
-      document
-        .getElementById("featureSection")
-        .classList.add("hidden");
-
-      document
-        .getElementById("partnerSection")
-        .classList.add("hidden");
-
-      document
-        .getElementById("appSection")
-        .classList.remove("hidden");
-
-      document
-        .getElementById("welcomeText")
-        .textContent =
-        "Welcome back, " + data.full_name + "! 🚀";
+      showApp(data);
 
     } else {
+
+      editingProfile = false;
 
       showProfile();
 
@@ -1536,30 +1713,154 @@
 
 
   /* =========================
-     SHOW PROFILE
+     SHOW APP
      ========================= */
 
-  function showProfile() {
+  function showApp(profile) {
 
-    document
-      .getElementById("authSection")
-      .classList.add("hidden");
+    hideAllSections();
 
     document
       .getElementById("appSection")
-      .classList.add("hidden");
+      .classList.remove("hidden");
 
     document
-      .getElementById("featureSection")
-      .classList.add("hidden");
+      .getElementById("welcomeText")
+      .textContent =
+      "Welcome back, " +
+      profile.full_name +
+      "! 🚀";
 
-    document
-      .getElementById("partnerSection")
-      .classList.add("hidden");
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  /* =========================
+     SHOW PROFILE
+     ========================= */
+
+  function showProfile(profile = null) {
+
+    hideAllSections();
 
     document
       .getElementById("profileSection")
       .classList.remove("hidden");
+
+    const title =
+      document.getElementById("profileTitle");
+
+    const subtitle =
+      document.getElementById("profileSubtitle");
+
+    if (editingProfile) {
+
+      title.textContent =
+        "Edit Your Profile ✏️";
+
+      subtitle.textContent =
+        "Update your FresherPlug information.";
+
+    } else {
+
+      title.textContent =
+        "Build Your Fresher Profile 👤";
+
+      subtitle.textContent =
+        "Tell other freshers a little about yourself.";
+
+    }
+
+    if (profile) {
+
+      document
+        .getElementById("fullName")
+        .value =
+        profile.full_name || "";
+
+      document
+        .getElementById("university")
+        .value =
+        profile.university || "";
+
+      document
+        .getElementById("department")
+        .value =
+        profile.department || "";
+
+      document
+        .getElementById("level")
+        .value =
+        profile.level || "";
+
+      document
+        .getElementById("aboutMe")
+        .value =
+        profile.about_me || "";
+
+    }
+
+    document
+      .getElementById("profileMessage")
+      .style.display = "none";
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  /* =========================
+     OPEN EDIT PROFILE
+     ========================= */
+
+  async function openEditProfile() {
+
+    if (!currentUser) {
+
+      showMessage(
+        "Please log in first."
+      );
+
+      return;
+    }
+
+    editingProfile = true;
+
+    const { data, error } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id, full_name, university, department, level, about_me"
+        )
+        .eq("id", currentUser.id)
+        .maybeSingle();
+
+    if (error) {
+
+      showMessage(
+        "We couldn't load your profile for editing."
+      );
+
+      return;
+    }
+
+    if (!data) {
+
+      editingProfile = false;
+
+      showProfile();
+
+      return;
+    }
+
+    showProfile(data);
 
   }
 
@@ -1647,6 +1948,19 @@
       return;
     }
 
+    editingProfile = false;
+
+    document
+      .getElementById("profileMessage")
+      .style.display = "none";
+
+    document
+      .getElementById("welcomeText")
+      .textContent =
+      "Welcome back, " +
+      fullName +
+      "! 🚀";
+
     document
       .getElementById("profileSection")
       .classList.add("hidden");
@@ -1655,12 +1969,228 @@
       .getElementById("appSection")
       .classList.remove("hidden");
 
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  /* =========================
+     RESET PASSWORD REQUEST
+     ========================= */
+
+  function openResetPassword() {
+
+    hideAllSections();
+
+    const resetEmail =
+      document.getElementById("resetEmail");
+
+    const loginEmail =
+      document.getElementById("email");
+
+    if (
+      loginEmail &&
+      loginEmail.value.trim()
+    ) {
+
+      resetEmail.value =
+        loginEmail.value.trim();
+
+    }
+
     document
-      .getElementById("welcomeText")
-      .textContent =
-      "Welcome to FresherPlug, " +
-      fullName +
-      "! 🚀";
+      .getElementById("resetMessage")
+      .style.display = "none";
+
+    document
+      .getElementById("resetSection")
+      .classList.remove("hidden");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  /* =========================
+     SEND PASSWORD RESET
+     ========================= */
+
+  async function sendPasswordReset() {
+
+    const email =
+      document
+        .getElementById("resetEmail")
+        .value
+        .trim();
+
+    if (!email) {
+
+      showResetMessage(
+        "Please enter your account email."
+      );
+
+      return;
+    }
+
+    showResetMessage(
+      "Sending password reset link... ⏳"
+    );
+
+    const redirectUrl =
+      window.location.origin +
+      window.location.pathname;
+
+    const { error } =
+      await supabaseClient.auth.resetPasswordForEmail(
+        email,
+        {
+          redirectTo: redirectUrl
+        }
+      );
+
+    if (error) {
+
+      showResetMessage(
+        error.message
+      );
+
+      return;
+    }
+
+    showResetMessage(
+      "If an account exists with that email, a password reset link has been sent. 📩"
+    );
+
+  }
+
+
+  /* =========================
+     PASSWORD RECOVERY EVENT
+     ========================= */
+
+  supabaseClient.auth.onAuthStateChange(
+    (event, session) => {
+
+      if (event === "PASSWORD_RECOVERY") {
+
+        currentUser =
+          session
+            ? session.user
+            : currentUser;
+
+        hideAllSections();
+
+        document
+          .getElementById("passwordSection")
+          .classList.remove("hidden");
+
+        document
+          .getElementById("passwordMessage")
+          .style.display = "none";
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+  );
+
+
+  /* =========================
+     UPDATE PASSWORD
+     ========================= */
+
+  async function updatePassword() {
+
+    const newPassword =
+      document
+        .getElementById("newPassword")
+        .value;
+
+    const confirmPassword =
+      document
+        .getElementById("confirmPassword")
+        .value;
+
+    if (!newPassword || !confirmPassword) {
+
+      showPasswordMessage(
+        "Please enter and confirm your new password."
+      );
+
+      return;
+    }
+
+    if (newPassword.length < 6) {
+
+      showPasswordMessage(
+        "Password must be at least 6 characters."
+      );
+
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+
+      showPasswordMessage(
+        "The passwords do not match."
+      );
+
+      return;
+    }
+
+    showPasswordMessage(
+      "Updating your password... ⏳"
+    );
+
+    const { error } =
+      await supabaseClient.auth.updateUser({
+        password: newPassword
+      });
+
+    if (error) {
+
+      showPasswordMessage(
+        error.message
+      );
+
+      return;
+    }
+
+    document
+      .getElementById("newPassword")
+      .value = "";
+
+    document
+      .getElementById("confirmPassword")
+      .value = "";
+
+    showPasswordMessage(
+      "Password updated successfully! 🔐🚀"
+    );
+
+    setTimeout(() => {
+
+      if (currentUser) {
+
+        checkProfile();
+
+      } else {
+
+        backToLogin();
+
+      }
+
+    }, 1500);
 
   }
 
@@ -2009,6 +2539,18 @@
       .classList.add("hidden");
 
     document
+      .getElementById("profileSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("resetSection")
+      .classList.add("hidden");
+
+    document
+      .getElementById("passwordSection")
+      .classList.add("hidden");
+
+    document
       .getElementById("appSection")
       .classList.remove("hidden");
 
@@ -2022,25 +2564,33 @@
 
   function backToLogin() {
 
-    document
-      .getElementById("profileSection")
-      .classList.add("hidden");
-
-    document
-      .getElementById("appSection")
-      .classList.add("hidden");
-
-    document
-      .getElementById("featureSection")
-      .classList.add("hidden");
-
-    document
-      .getElementById("partnerSection")
-      .classList.add("hidden");
+    hideAllSections();
 
     document
       .getElementById("authSection")
       .classList.remove("hidden");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  function backFromProfile() {
+
+    if (editingProfile && currentUser) {
+
+      editingProfile = false;
+
+      checkProfile();
+
+    } else {
+
+      backToLogin();
+
+    }
 
   }
 
@@ -2054,28 +2604,43 @@
     await supabaseClient.auth.signOut();
 
     currentUser = null;
+    editingProfile = false;
 
-    document
-      .getElementById("appSection")
-      .classList.add("hidden");
-
-    document
-      .getElementById("profileSection")
-      .classList.add("hidden");
-
-    document
-      .getElementById("featureSection")
-      .classList.add("hidden");
-
-    document
-      .getElementById("partnerSection")
-      .classList.add("hidden");
+    hideAllSections();
 
     document
       .getElementById("authSection")
       .classList.remove("hidden");
 
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
   }
+
+
+  /* =========================
+     RESTORE SESSION
+     ========================= */
+
+  async function restoreSession() {
+
+    const { data } =
+      await supabaseClient.auth.getSession();
+
+    if (data && data.session) {
+
+      currentUser =
+        data.session.user;
+
+      await checkProfile();
+
+    }
+
+  }
+
+  restoreSession();
 
 </script>
 
